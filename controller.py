@@ -8,9 +8,18 @@ class Controller(ABC):
     def __init__(self):
         self._game = Game()
 
+        # a dictionary with the keys as the pygame constant for
+        # each key and the value as 1 or 0, demonstrating if the
+        # key was pressed or not, respectively.
+        self._keys = {}
+
     @property
     def game(self):
         return self._game
+
+    @property
+    def keys(self):
+        return self._keys
 
     @abstractmethod
     def interpret_input():
@@ -34,15 +43,21 @@ class ObstacleController(Controller):
         Get user input from keyboard and check if it is expected input.
 
         If the correct key is inputted, the game continues. If not,
-        the game.game_over() is called.
+        the game.game_over() is called. If the user exits the game window,
+        game.game_over() is called.
 
         Args:
             correct_key: Pygame constant referring to the key that
                 needed to be pressed for the given obstacle.
         """
-        events = pygame.event.get()
-        for event in events:
-            if event.type == pygame.KEYDOWN:
-                print(event.key)
-                if event.key != correct_key:
-                    self.game.game_over()
+        # if the user exits the game window, end the game
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.game.game_over()
+
+        # update the values of keys pressed
+        self._keys = pygame.key.get_pressed()
+
+        # if the user presses the wrong key, end the game
+        if not self.keys[correct_key]:
+            self.game.game_over()

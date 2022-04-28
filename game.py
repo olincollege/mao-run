@@ -20,11 +20,13 @@ class Game:
         self.player = ObstacleController()
     
     def game_over(self):
-        print("game over")
-        self.restart()
+        """"
+        Demonstrate that the game is over.
 
-    def restart():
-        pass
+        Update the screen to demonstrate the game is over.
+        """
+        print("game over")
+        # create a method in world that will display game over when called
     
     def update_obstacles():
         pass
