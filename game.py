@@ -1,7 +1,5 @@
 import pygame
 from random import choice
-from obstacle import Obstacle
-from controller import ObstacleController
 
 class Game:
 
@@ -17,7 +15,11 @@ class Game:
         }
         self.obstacles = [] # create obstacle instances
         self.character = "" # create character instance
-        self.player = ObstacleController()
+        # self.player = ObstacleController()
+    
+    @property
+    def obstacle_actions(self):
+        return self._obstacle_actions
     
     def game_over(self):
         """"

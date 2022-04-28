@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 import pygame
+import sys
 from game import Game
 
 
@@ -53,7 +54,8 @@ class ObstacleController(Controller):
         # if the user exits the game window, end the game
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                self.game.game_over()
+                pygame.quit()
+                sys.exit()
 
         # update the values of keys pressed
         self._keys = pygame.key.get_pressed()
@@ -61,3 +63,5 @@ class ObstacleController(Controller):
         # if the user presses the wrong key, end the game
         if not self.keys[correct_key]:
             self.game.game_over()
+        else:
+            print('key')
