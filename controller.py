@@ -9,18 +9,9 @@ class Controller(ABC):
     def __init__(self):
         self._game = Game()
 
-        # a dictionary with the keys as the pygame constant for
-        # each key and the value as 1 or 0, demonstrating if the
-        # key was pressed or not, respectively.
-        self._keys = {}
-
     @property
     def game(self):
         return self._game
-
-    @property
-    def keys(self):
-        return self._keys
 
     @abstractmethod
     def interpret_input():
