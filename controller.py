@@ -57,11 +57,8 @@ class ObstacleController(Controller):
                 pygame.quit()
                 sys.exit()
 
-        # update the values of keys pressed
-        self._keys = pygame.key.get_pressed()
-
-        # if the user presses the wrong key, end the game
-        if not self.keys[correct_key]:
-            self.game.game_over()
-        else:
-            print('key')
+            # if a key is down, check if the correct key was pressed
+            # if it is not the correct key, end the game
+            if event.type == pygame.KEYDOWN:
+                if event.key != correct_key:
+                    self.game.game_over()
