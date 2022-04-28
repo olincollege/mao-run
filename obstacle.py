@@ -12,7 +12,7 @@ class Obstacle:
         """
         self._sprite = sprite
         self._x_position = 800
-        self._y_position = 600
+        self._y_position = 200
         self._action = actions[sprite]
 
     @property

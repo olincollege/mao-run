@@ -30,7 +30,7 @@ class CharacterController(Controller):
 
 class ObstacleController(Controller):
 
-    def interpret_input(self, correct_key, obstacle_list):
+    def interpret_input(self, event, correct_key, obstacle_list):
         """
         Get user input from keyboard and check if it is expected input.
 
@@ -43,20 +43,18 @@ class ObstacleController(Controller):
                 needed to be pressed for the given obstacle.
         """
         # if the user exits the game window, end the game
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
+        # for event in pygame.event.get():
+        #     if event.type == pygame.QUIT:
+        #         pygame.quit()
+        #         sys.exit()
 
             # if a key is down, check if the correct key was pressed
             # if it is not the correct key, end the game
-            if event.type == pygame.KEYDOWN:
-                
-                if event.key != correct_key:
-                    self.game.game_over()
-                else:
-                    obstacle_list = obstacle_list[1:]
-                    print("correct key pressed")
+        if event.type == pygame.KEYDOWN:
+            
+            if event.key != correct_key:
+                return False
+        return True
 
     def check_collision(self, current_obstacle):
         """
@@ -67,4 +65,5 @@ class ObstacleController(Controller):
                 the obstacle on the screen.
         """
         if current_obstacle.x_position <= 200:
-            self.game.game_over()
+            return False
+        return True

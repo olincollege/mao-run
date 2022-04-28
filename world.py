@@ -51,17 +51,12 @@ class MaoRun(world):
         self.screen = pygame.display.set_mode((800,400))
         pygame.display.set_caption('Mao Run')
 
-    def display(self):
+    def display(self, obstacle):
         self.screen.blit(self.sky_surface,(0,0))
         self.screen.blit(self.ground_surface,(0,300))
-        self.screen.blit(self.joker,(80,300))
+        self.screen.blit(self.joker,(80,200))
         # self.screen.blit(self.title_surface,(250,120))
         # self.screen.blit(self.player_surface,self.player_rect)
-
-        pygame.display.update()
-        self.clock.tick(60)
-
-    def obstacle_display(self, obstacle):
 
         if obstacle.sprite == "spaids":
             self.screen.blit(self.spaids, (obstacle.x_position, \
@@ -75,3 +70,20 @@ class MaoRun(world):
         elif obstacle.sprite == "hearts":
             self.screen.blit(self.hearts, (obstacle.x_position, \
                 obstacle.y_position))
+
+        pygame.display.update()
+        self.clock.tick(60)
+
+    # def obstacle_display(self, obstacle):
+    #     if obstacle.sprite == "spaids":
+    #         self.screen.blit(self.spaids, (obstacle.x_position, \
+    #             obstacle.y_position))
+    #     elif obstacle.sprite == "diamonds":
+    #         self.screen.blit(self.diamonds, (obstacle.x_position, \
+    #             obstacle.y_position))
+    #     elif obstacle.sprite == "clubs":
+    #         self.screen.blit(self.clubs, (obstacle.x_position, \
+    #             obstacle.y_position))
+    #     elif obstacle.sprite == "hearts":
+    #         self.screen.blit(self.hearts, (obstacle.x_position, \
+    #             obstacle.y_position))

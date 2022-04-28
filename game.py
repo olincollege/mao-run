@@ -1,4 +1,5 @@
 import pygame
+import sys
 from random import choice
 
 class Game:
@@ -27,7 +28,8 @@ class Game:
 
         Update the screen to demonstrate the game is over.
         """
-        print("game over")
+        # print("game over")
+        return False
         # create a method in world that will display game over when called
     
     def update_obstacles():
