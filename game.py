@@ -8,10 +8,10 @@ class Game:
     def __init__(self):
         self.world = "" # create world instance
         self._obstacle_actions = {
-            "square": choice(self.actions),
-            "rectangle": choice(self.actions),
-            "triangle": choice(self.actions),
-            "circle": choice(self.actions),
+            "spaids": choice(self.actions),
+            "diamonds": choice(self.actions),
+            "hearts": choice(self.actions),
+            "clubs": choice(self.actions),
         }
         self.obstacles = [] # create obstacle instances
         self.character = "" # create character instance
