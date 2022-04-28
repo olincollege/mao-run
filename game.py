@@ -1,3 +1,4 @@
+import pygame
 
 class Game:
 
@@ -8,13 +9,4 @@ class Game:
         pass
 
     def restart():
-        pass
-    
-    def update_world():
-        pass
-
-    def update_characters():
-        pass
-
-    def update_obstacles():
         pass
