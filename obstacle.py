@@ -10,6 +10,14 @@ class Obstacle:
             actions: a dictionary with the keys as the names of the sprites
                 and the values as the expected actions for the given sprites.
         """
-        self.sprite = sprite
+        self._sprite = sprite
         self.location = "" # location on screen
-        self.action = actions[sprite]
+        self._action = actions[sprite]
+
+    @property
+    def sprite(self):
+        return self._sprite
+
+    @property
+    def action(self):
+        return self._action
