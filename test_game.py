@@ -4,10 +4,14 @@ pygame.init()
 # Initializing display surface
 screen = pygame.display.set_mode((800,400))
 pygame.display.set_caption('Mao Run')
+
 # Necessary to control frame rate for consistency across
 # different devices
 clock = pygame.time.Clock()
+
+# Title
 title_font = pygame.font.Font(None, 100)
+title_surface = title_font.render('Mao Run', False, 'Brown')
 
 # Test regular surface
 sky_surface = pygame.Surface((800,300))
@@ -15,8 +19,6 @@ sky_surface.fill('Blue')
 
 ground_surface = pygame.Surface((800,100))
 ground_surface.fill('Green')
-
-title_surface = title_font.render('Mao Run', False, 'Brown')
 
 object_surface = pygame.Surface((50,50))
 object_surface.fill('Red')
@@ -46,7 +48,7 @@ while True:
 
     if player_rect.colliderect(object_rect):
         print('Collision')
-        
+
     pygame.display.update()
     # While loop should not run faster than 60fps
     # Maximum frame rate
