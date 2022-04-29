@@ -6,7 +6,7 @@ from obstacle import Obstacle
 class Game:
 
     actions = [pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_DOWN]
-    possible_obstacles = ["spaids", "diamonds", "hearts", "clubs"]
+    possible_obstacles = ["spades", "diamonds", "hearts", "clubs"]
 
     def __init__(self):
         self._obstacle_actions = {
