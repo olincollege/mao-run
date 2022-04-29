@@ -30,7 +30,7 @@ class CharacterController(Controller):
 
 class ObstacleController(Controller):
 
-    def interpret_input(self, event, correct_key, obstacle_list):
+    def interpret_input(self, event, correct_key):
         """
         Get user input from keyboard and check if it is expected input.
 
