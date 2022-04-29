@@ -1,7 +1,6 @@
 import pygame
+import sys
 from random import choice
-from obstacle import Obstacle
-from controller import ObstacleController
 
 class Game:
 
@@ -10,21 +9,28 @@ class Game:
     def __init__(self):
         self.world = "" # create world instance
         self._obstacle_actions = {
-            "square": choice(self.actions),
-            "rectangle": choice(self.actions),
-            "triangle": choice(self.actions),
-            "circle": choice(self.actions),
+            "spaids": choice(self.actions),
+            "diamonds": choice(self.actions),
+            "hearts": choice(self.actions),
+            "clubs": choice(self.actions),
         }
         self.obstacles = [] # create obstacle instances
         self.character = "" # create character instance
-        self.player = ObstacleController()
+        # self.player = ObstacleController()
+    
+    @property
+    def obstacle_actions(self):
+        return self._obstacle_actions
     
     def game_over(self):
-        print("game over")
-        self.restart()
+        """"
+        Demonstrate that the game is over.
 
-    def restart():
-        pass
+        Update the screen to demonstrate the game is over.
+        """
+        # print("game over")
+        return False
+        # create a method in world that will display game over when called
     
     def update_obstacles():
         pass
