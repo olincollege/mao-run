@@ -1,6 +1,6 @@
 import sys
 import pygame
-
+from random import choice
 from world import MaoRun
 from game import Game
 from obstacle import Obstacle
@@ -12,21 +12,18 @@ if __name__ == '__main__':
     # Initialize world
     CUR_WORLD = MaoRun()
     game = Game()
+
     # Initialize player
 
-    # Initialize obstacles
-    obstacles = [Obstacle("spades", game.obstacle_actions), Obstacle("diamonds", game.obstacle_actions), Obstacle("hearts", game.obstacle_actions), Obstacle("clubs", game.obstacle_actions)]
+    # Initialize current obstacle
+    current_obstacle = Obstacle(choice(game.possible_obstacles), game.obstacle_actions)
 
     # Initialize controller
     control = ObstacleController()
 
-    while True:
-        # for event in pygame.event.get():
-        #     if event.type == pygame.QUIT:
-        #         pygame.quit()
-        #         sys.exit()
-        control.interpret_input(obstacles[0].action, obstacles)
-        control.check_collision(obstacles[0])
-        obstacles[0].update_position()
 
-        CUR_WORLD.display()
+    while True:
+        
+        CUR_WORLD.display(current_obstacle)
+        current_obstacle = game.check_continue(control, current_obstacle)
+        current_obstacle.update_position()

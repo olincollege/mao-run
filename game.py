@@ -1,21 +1,20 @@
 import pygame
+import sys
 from random import choice
+from obstacle import Obstacle
 
 class Game:
 
     actions = [pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_DOWN]
+    possible_obstacles = ["spades", "diamonds", "hearts", "clubs"]
 
     def __init__(self):
-        self.world = "" # create world instance
         self._obstacle_actions = {
-            "spaids": choice(self.actions),
+            "spades": choice(self.actions),
             "diamonds": choice(self.actions),
             "hearts": choice(self.actions),
             "clubs": choice(self.actions),
         }
-        self.obstacles = [] # create obstacle instances
-        self.character = "" # create character instance
-        # self.player = ObstacleController()
     
     @property
     def obstacle_actions(self):
@@ -29,24 +28,43 @@ class Game:
         """
         print("game over")
         # create a method in world that will display game over when called
-    
-    def update_obstacles():
-        pass
 
-    # def check_continue(self, obstacle):
-    #     """
-    #     Check whether the game should continue.
+    def check_continue(self, control, obstacle):
+        """
+        Check whether the game should continue.
 
-    #     If the user presses the correct key, the game continues.
-    #     If not, game_over is called and the game restarts.
+        If the user presses the correct key, the game continues.
+        If not, game_over is called and the game restarts.
 
-    #     Args:
-    #         obstacle: An obstacle instance that is the current obstacle
-    #             on the screen.
-    #     """
-    #     if self.player.interpret_input(obstacle.action):
-    #         print("Can continue")
-    #     else:
-    #         print("end game")
-    #         self.game_over()
+        Args:
+            control: An ObstacleController instance for the current game.
+            obstacle: An obstacle instance that is the current obstacle
+                on the screen.
+        
+        Returns:
+            An obstacle instance that is the same as the argument if the game
+            is not over and the key is pressed, or is a new random obstacle if
+            the correct key was pressed.
+        """
+        for event in pygame.event.get():
+            # if the user tries to exit the window, end the game
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            
+            # determine whether the user pressed the correct key
+            pressed_correct_key = control.interpret_input(event, obstacle.action)
+
+            # if a key is pressed and the key is the correct key, return a new
+            # obstacle instance
+            if event.type == pygame.KEYDOWN and pressed_correct_key:
+                print(obstacle.sprite)
+                return Obstacle(choice(self.possible_obstacles), self.obstacle_actions)
+        
+        # if the obstacle collides with the player, end the game
+        if control.check_collision(obstacle):
+            self.game_over()
+        
+        # return the obstacle instance entered as an argument if no keys were pressed
+        return obstacle
 
