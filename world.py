@@ -7,9 +7,7 @@ import pygame
 
 class world(ABC):
 
-    def __init__(self):
-        # title_font = pygame.font.Font(None, 100)
-        
+    def __init__(self, player):
         # Initialize a sky surface
         self.sky_surface = pygame.Surface((800,300))
         self.sky_surface.fill('Blue')
@@ -18,11 +16,11 @@ class world(ABC):
         self.ground_surface = pygame.Surface((800,100))
         self.ground_surface.fill('Green')
         
-        self.joker = pygame.image.load("Sprites/joker2.png")
-        self.joker_rect = self.joker.get_rect(midbottom = (80,300))
+        # Initialize a player
+        self.player = player
 
         self.hearts = pygame.image.load("Sprites/hearts.png")
-        # self.heart_rect = self.heart.get_rect(midbottom = (300,300))
+        self.heart_rect = self.hearts.get_rect(midbottom = (400,300))
 
         self.spades = pygame.image.load("Sprites/spades.png")
         self.spades_rect = self.spades.get_rect(midbottom = (300,300))
@@ -43,8 +41,8 @@ class world(ABC):
         pass
 
 class MaoRun(world):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, Character):
+        super().__init__(Character)
 
         # Initialize a screen
         self.screen = pygame.display.set_mode((800,400))
@@ -53,9 +51,8 @@ class MaoRun(world):
     def display(self, obstacle):
         self.screen.blit(self.sky_surface,(0,0))
         self.screen.blit(self.ground_surface,(0,300))
-        self.screen.blit(self.joker,(80,200))
-        # self.screen.blit(self.title_surface,(250,120))
-        # self.screen.blit(self.player_surface,self.player_rect)
+        # self.screen.blit(self.joker,(80,200))
+        self.player.draw(self.screen)
 
         if obstacle.sprite == "spades":
             self.screen.blit(self.spades, (obstacle.x_position, \
@@ -72,17 +69,3 @@ class MaoRun(world):
 
         pygame.display.update()
         self.clock.tick(60)
-
-    # def obstacle_display(self, obstacle):
-    #     if obstacle.sprite == "spades":
-    #         self.screen.blit(self.spades, (obstacle.x_position, \
-    #             obstacle.y_position))
-    #     elif obstacle.sprite == "diamonds":
-    #         self.screen.blit(self.diamonds, (obstacle.x_position, \
-    #             obstacle.y_position))
-    #     elif obstacle.sprite == "clubs":
-    #         self.screen.blit(self.clubs, (obstacle.x_position, \
-    #             obstacle.y_position))
-    #     elif obstacle.sprite == "hearts":
-    #         self.screen.blit(self.hearts, (obstacle.x_position, \
-    #             obstacle.y_position))
