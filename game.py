@@ -2,6 +2,7 @@ import pygame
 import sys
 from random import choice
 from obstacle import Obstacle
+from world import MaoRun
 
 class Game:
 
@@ -27,6 +28,8 @@ class Game:
         Update the screen to demonstrate the game is over.
         """
         print("game over")
+        pygame.quit()
+        sys.exit()
         # create a method in world that will display game over when called
 
     def check_continue(self, control, obstacle):

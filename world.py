@@ -31,6 +31,7 @@ class world(ABC):
         self.diamonds = pygame.image.load("Sprites/diamonds.png")
         self.diamonds_rect = self.diamonds.get_rect(midbottom = (300,300))
 
+        self.game_over = pygame.image.load("Sprites/gameover.png")
         self.clock = pygame.time.Clock()
     
     @abstractmethod
@@ -48,6 +49,9 @@ class MaoRun(world):
         self.screen = pygame.display.set_mode((800,400))
         pygame.display.set_caption('Mao Run')
 
+    def display_game_over(self):
+        self.screen.blit(self.game_over,(0,0))
+        
     def display(self, obstacle):
         self.screen.blit(self.sky_surface,(0,0))
         self.screen.blit(self.ground_surface,(0,300))

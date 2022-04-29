@@ -27,7 +27,6 @@ if __name__ == '__main__':
 
 
     while True:
-        
         CUR_WORLD.display(current_obstacle)
         current_obstacle = game.check_continue(control, current_obstacle)
         current_obstacle.update_position()
