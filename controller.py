@@ -51,10 +51,10 @@ class ObstacleController(Controller):
             # if a key is down, check if the correct key was pressed
             # if it is not the correct key, end the game
         if event.type == pygame.KEYDOWN:
-            
             if event.key != correct_key:
                 return False
-        return True
+            return True
+        return
 
     def check_collision(self, current_obstacle):
         """
@@ -65,5 +65,5 @@ class ObstacleController(Controller):
                 the obstacle on the screen.
         """
         if current_obstacle.x_position <= 200:
-            return False
-        return True
+            return True
+        return False

@@ -30,22 +30,17 @@ if __name__ == '__main__':
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-            
             pressed_correct_key = control.interpret_input(event, obstacle_list[0].action, obstacle_list)
             has_collided = control.check_collision(obstacle_list[0])
-            if not pressed_correct_key or has_collided:
-                should_continue = False
-                break
-            else:
-                break
+            if event.type == pygame.KEYDOWN:
+                if pressed_correct_key:
+                    should_continue = False
+                    print(obstacle_list[0].sprite)
+                    obstacle_list = obstacle_list[1:]
+                    break
         if not should_continue:
-            game.game_over()
-            break
-        print(obstacle_list[0].sprite)
-        obstacle_list = obstacle_list[1:]
+            continue
 
-            # print([obstacle.sprite for obstacle in obstacle_list])
+        # print([obstacle.sprite for obstacle in obstacle_list])
         obstacle_list[0].update_position()
-
-       
         # CUR_WORLD.obstacle_display(obstacle_list[0])
