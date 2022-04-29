@@ -16,9 +16,9 @@ if __name__ == '__main__':
     # Initialize player
 
     # Initialize obstacles
-    possible_obstacles = ["spaids", "diamonds", "hearts", "clubs"]
+    possible_obstacles = ["spades", "diamonds", "hearts", "clubs"]
     obstacle_list = [Obstacle(choice(possible_obstacles), game.obstacle_actions) for _ in range(10)]
-    # obstacles = [Obstacle("spaids", game.obstacle_actions), Obstacle("diamonds", game.obstacle_actions), Obstacle("hearts", game.obstacle_actions), Obstacle("clubs", game.obstacle_actions)]
+    # obstacles = [Obstacle("spades", game.obstacle_actions), Obstacle("diamonds", game.obstacle_actions), Obstacle("hearts", game.obstacle_actions), Obstacle("clubs", game.obstacle_actions)]
 
     # Initialize controller
     control = ObstacleController()

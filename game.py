@@ -9,7 +9,7 @@ class Game:
     def __init__(self):
         self.world = "" # create world instance
         self._obstacle_actions = {
-            "spaids": choice(self.actions),
+            "spades": choice(self.actions),
             "diamonds": choice(self.actions),
             "hearts": choice(self.actions),
             "clubs": choice(self.actions),
