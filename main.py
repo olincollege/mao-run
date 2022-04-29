@@ -38,8 +38,10 @@ if __name__ == '__main__':
                     print(obstacle_list[0].sprite)
                     obstacle_list = obstacle_list[1:]
                     break
-        if not should_continue:
-            continue
+            if has_collided:
+                game.game_over()
+        if control.check_collision(obstacle_list[0]):
+            game.game_over()
 
         # print([obstacle.sprite for obstacle in obstacle_list])
         obstacle_list[0].update_position()
