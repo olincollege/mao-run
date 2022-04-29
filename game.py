@@ -10,7 +10,7 @@ class Game:
 
     def __init__(self):
         self._obstacle_actions = {
-            "spaids": choice(self.actions),
+            "spades": choice(self.actions),
             "diamonds": choice(self.actions),
             "hearts": choice(self.actions),
             "clubs": choice(self.actions),
