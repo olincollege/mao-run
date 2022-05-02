@@ -2,8 +2,6 @@
 Unit tests for controller
 """
 
-from cgi import test
-from turtle import down, up
 import pytest
 import pygame
 from random import choice
@@ -29,7 +27,6 @@ test_obstacles = [Obstacle(obstacle, obstacle_actions) for obstacle in possible_
 test_spades = test_obstacles[0]
 
 # set up for testing with user input
-# up_arrow = pygame.event.Event(pygame.KEYDOWN, {'mod': 0, 'scancode': 30, 'key': pygame.K_UP, 'unicode': 'a'})
 up_arrow = pygame.event.Event(pygame.KEYDOWN, {'unicode': '', 'key': 1073741906, 'mod': 4096, 'scancode': 82, 'window': None})
 down_arrow = pygame.event.Event(pygame.KEYDOWN, {'unicode': '', 'key': 1073741905, 'mod': 4096, 'scancode': 81, 'window': None})
 left_arrow = pygame.event.Event(pygame.KEYDOWN, {'unicode': '', 'key': 1073741904, 'mod': 4096, 'scancode': 80, 'window': None})
