@@ -2,6 +2,7 @@ import pygame
 import sys
 from random import choice
 from obstacle import Obstacle
+from world import MaoRun
 
 class Game:
 
@@ -27,6 +28,8 @@ class Game:
         Update the screen to demonstrate the game is over.
         """
         print("game over")
+        pygame.quit()
+        sys.exit()
         # create a method in world that will display game over when called
 
     def check_continue(self, control, obstacle):
@@ -57,9 +60,12 @@ class Game:
 
             # if a key is pressed and the key is the correct key, return a new
             # obstacle instance
-            if event.type == pygame.KEYDOWN and pressed_correct_key:
-                print(obstacle.sprite)
-                return Obstacle(choice(self.possible_obstacles), self.obstacle_actions)
+            if event.type == pygame.KEYDOWN:
+                if pressed_correct_key:
+                    print(obstacle.sprite)
+                    return Obstacle(choice(self.possible_obstacles), self.obstacle_actions)
+                else:
+                    self.game_over()
         
         # if the obstacle collides with the player, end the game
         if control.check_collision(obstacle):
