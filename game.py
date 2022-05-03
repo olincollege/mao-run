@@ -6,18 +6,23 @@ from world import MaoRun
 
 class Game:
 
-    actions = [pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT]
+    # actions = [pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT]
     possible_obstacles = ["spades", "diamonds", "hearts", "clubs"]
 
-    def __init__(self):
-        self.called = False
-        self._obstacle_actions = {
-            "spades": choice(self.actions),
-            "diamonds": choice(self.actions),
-            "hearts": choice(self.actions),
-            "clubs": choice(self.actions),
-        }
+    def __init__(self, obstacle_actions):
+        self._game_over_called = False
+        # self._obstacle_actions = {
+        #     "spades": choice(self.actions),
+        #     "diamonds": choice(self.actions),
+        #     "hearts": choice(self.actions),
+        #     "clubs": choice(self.actions),
+        # }
+        self._obstacle_actions = obstacle_actions
     
+    @property
+    def game_over_called(self):
+        return self._game_over_called
+
     @property
     def obstacle_actions(self):
         return self._obstacle_actions
@@ -28,7 +33,7 @@ class Game:
 
         Update the screen to demonstrate the game is over.
         """
-        self.called = True
+        self._game_over_called = True
         # pygame.quit()
         # sys.exit()
 

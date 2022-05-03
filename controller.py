@@ -10,8 +10,8 @@ from game import Game
 
 class Controller(ABC):
 
-    def __init__(self):
-        self._game = Game()
+    def __init__(self, obstacle_actions):
+        self._game = Game(obstacle_actions)
 
     @property
     def game(self):
