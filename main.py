@@ -20,7 +20,7 @@ if __name__ == '__main__':
     }
     num_rounds = 0
 
-    # initiliaze player
+    # Initialize player
     player = pygame.sprite.GroupSingle()
     player.add(Character())
 
@@ -30,36 +30,41 @@ if __name__ == '__main__':
     #initialize game
     game = Game(obstacle_actions)
 
-    # Initialize player
-    
     # Initialize current obstacle
     current_obstacle = Obstacle(choice(game.possible_obstacles), game.obstacle_actions)
 
     # Initialize controller
     control = ObstacleController(obstacle_actions)
 
-    # allow the users three chances to play the game
-    while num_rounds < 3:
-        num_rounds += 1
+    # # allow the users three chances to play the game
+    # while num_rounds < 3:
+    #     num_rounds += 1
+    #     print(game.game_over_called)
 
         # have the game continue until it should end
-        while True:
-            # update the current obstacle by checking if the game should continue
-            current_obstacle = game.check_continue(control, current_obstacle)
-            # move the current obstacle
-            current_obstacle.update_position()
+    while True:
+        # update the current obstacle by checking if the game should continue
+        current_obstacle = game.check_continue(control, current_obstacle)
+        # move the current obstacle
+        current_obstacle.update_position()
 
-            # if the game should be over, restart the game and break the loop
-            if game.game_over_called:
-                print("restart")
-                # CUR_WORLD.display_restart()
-                game = Game(obstacle_actions)
-                break
-            # else, update the display
+        # if the game should be over, restart the game and break the loop
+        if game.game_over_called:
+            # print("restart")
+            if num_rounds < 3:
+                CUR_WORLD.display_restart()
+                for event in pygame.event.get():
+                    # if the user tries to exit the window, end the game
+                    if event.type == pygame.KEYDOWN:
+                        print('yes')
+                        game = Game(obstacle_actions)
+                        current_obstacle = Obstacle(choice(game.possible_obstacles), game.obstacle_actions)
+                        num_rounds += 1
+                        continue
             else:
-                CUR_WORLD.display()
-                CUR_WORLD.display_obstacles(current_obstacle)
-                pygame.display.update()
-    
-    # after three tries, display game over screen
-    CUR_WORLD.display_game_over()
+                CUR_WORLD.display_game_over()
+        # else, update the display
+        else:
+            CUR_WORLD.display()
+            CUR_WORLD.display_obstacles(current_obstacle)
+            pygame.display.update()
