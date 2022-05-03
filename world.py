@@ -67,9 +67,10 @@ class MaoRun(world):
         """
         Insert Docstring
         """
-        self.screen.fill("black")
+        self.screen.fill("#5C5755")
         self.screen.blit(self.game_over,(150,0))
         self.clock.tick(60)
+        pygame.display.update()
     
     def display_restart(self):
         """
@@ -77,6 +78,7 @@ class MaoRun(world):
         """
         self.screen.fill("red")
         self.clock.tick(60)
+        pygame.display.update()
     
     def display_obstacles(self, obstacle):
         """
