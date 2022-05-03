@@ -59,9 +59,7 @@ class ObstacleController(Controller):
             current_obstacle: An instance of obstacle that represents
                 the obstacle on the screen.
         """
-        if current_obstacle.x_position <= 200:
-            return True
-        return False
+        return current_obstacle.has_collided()
     
     def restart_input(self, event):
         if event.type == pygame.KEYDOWN:

@@ -54,6 +54,7 @@ if __name__ == '__main__':
                 print("restart")
                 # CUR_WORLD.display_restart()
                 game = Game(obstacle_actions)
+                current_obstacle = Obstacle(choice(game.possible_obstacles), game.obstacle_actions)
                 break
             # else, update the display
             else:
