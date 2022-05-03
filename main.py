@@ -52,11 +52,14 @@ if __name__ == '__main__':
             # if the game should be over, restart the game and break the loop
             if game.game_over_called:
                 print("restart")
+                # CUR_WORLD.display_restart()
                 game = Game(obstacle_actions)
                 break
             # else, update the display
             else:
-                CUR_WORLD.display(current_obstacle)
+                CUR_WORLD.display()
+                CUR_WORLD.display_obstacles(current_obstacle)
+                pygame.display.update()
     
     # after three tries, display game over screen
     CUR_WORLD.display_game_over()
