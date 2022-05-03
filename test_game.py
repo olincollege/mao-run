@@ -1,57 +1,74 @@
+"""
+Unit tests for game
+"""
+
+import pytest
 import pygame
+from random import choice
+from controller import ObstacleController
+from obstacle import Obstacle
+from game import Game
+
 pygame.init()
 
-# Initializing display surface
-screen = pygame.display.set_mode((800,400))
-pygame.display.set_caption('Mao Run')
+# define variables needed to create test instances
+actions = [pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT]
+possible_obstacles = ["spades", "diamonds", "hearts", "clubs"]
+obstacle_actions = {
+    "spades": pygame.K_UP,
+    "diamonds": pygame.K_DOWN,
+    "hearts": pygame.K_LEFT,
+    "clubs": pygame.K_RIGHT,
+}
 
-# Necessary to control frame rate for consistency across
-# different devices
-clock = pygame.time.Clock()
+# define controller and obstacle for testing
+test_controller = ObstacleController()
+test_obstacles = [Obstacle(obstacle, obstacle_actions) for obstacle in possible_obstacles]
+test_spades = test_obstacles[0]
 
-# Title
-title_font = pygame.font.Font(None, 100)
-title_surface = title_font.render('Mao Run', False, 'Brown')
+# set up for testing with user input
+up_arrow = pygame.event.Event(pygame.KEYDOWN, {'unicode': '', 'key': 1073741906, 'mod': 4096, 'scancode': 82, 'window': None})
+down_arrow = pygame.event.Event(pygame.KEYDOWN, {'unicode': '', 'key': 1073741905, 'mod': 4096, 'scancode': 81, 'window': None})
+left_arrow = pygame.event.Event(pygame.KEYDOWN, {'unicode': '', 'key': 1073741904, 'mod': 4096, 'scancode': 80, 'window': None})
+right_arrow = pygame.event.Event(pygame.KEYDOWN, {'unicode': '', 'key': 1073741903, 'mod': 4096, 'scancode': 79, 'window': None})
 
-# Test regular surface
-sky_surface = pygame.Surface((800,300))
-sky_surface.fill('Blue')
+key_input = [up_arrow, down_arrow, left_arrow, right_arrow]
 
-ground_surface = pygame.Surface((800,100))
-ground_surface.fill('Green')
+# define test cases
+correct_input_test_cases = [(key_input[i], test_obstacles[i]) for i in range(len(key_input))]
+incorrect_input_test_cases = [(key_input[::-1][i], test_obstacles[i]) for i in range(len(key_input))]
 
-object_surface = pygame.Surface((50,50))
-object_surface.fill('Red')
-object_rect = object_surface.get_rect(midbottom = (300,300))
 
-player_surface = pygame.Surface((50,50))
-player_surface.fill('Black')
-player_rect = player_surface.get_rect(midbottom = (80,300))
+# for check continue, just check that it works when the same obstacle is returned???
 
-while True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            exit()
-    # Formula: displace surface . blit (regular surface, position)
-    screen.blit(sky_surface,(0,0))
-    screen.blit(ground_surface,(0,300))
-    screen.blit(title_surface,(250,120))
-    screen.blit(player_surface,player_rect)
-    # Set object speed
-    object_rect.x += 4
-    if object_rect.left <= 0:
-        object_rect.right = 800
-    elif object_rect.right >= 800:
-        object_rect.left = 0
-    screen.blit(object_surface,object_rect)
+# TODO: Add tests
 
-    if player_rect.colliderect(object_rect):
-        print('Collision')
 
-    pygame.display.update()
-    # While loop should not run faster than 60fps
-    # Maximum frame rate
-    clock.tick(60)
 
-    # Adding image: .convert_alpha()
+# input testing
+# test that the correct input is detected
+@pytest.mark.parametrize("key,obstacle", correct_input_test_cases)
+def test_interpret_input_correct(key, obstacle):
+    assert test_controller.interpret_input(key, obstacle.action) == True
+
+# test that the incorrect input is detected as incorrect
+@pytest.mark.parametrize("key,obstacle", incorrect_input_test_cases)
+def test_interpret_input_incorrect(key, obstacle):
+    assert test_controller.interpret_input(key, obstacle.action) == False
+
+
+# collision testing
+# test that the collision is detected when it should be
+def test_check_collision_happens():
+    test_spades._x_position = 200
+    assert test_controller.check_collision(test_spades) == True
+
+# test that the collision is not detected when it should not be
+def test_check_collision_does_not_happen():
+    test_spades._x_position = 500
+    assert test_controller.check_collision(test_spades) == False
+
+# test that the collision is detected when obstacle is past the player
+def test_check_collision_happens_at_zero():
+    test_spades._x_position = 0
+    assert test_controller.check_collision(test_spades) == True

@@ -38,22 +38,13 @@ class ObstacleController(Controller):
         """
         Get user input from keyboard and check if it is expected input.
 
-        If the correct key is inputted, the game continues. If not,
-        the game.game_over() is called. If the user exits the game window,
-        game.game_over() is called.
-
         Args:
             correct_key: Pygame constant referring to the key that
                 needed to be pressed for the given obstacle.
+        
+        Returns:
+            A boolean value referring to whether the correct key was pressed.
         """
-        # if the user exits the game window, end the game
-        # for event in pygame.event.get():
-        #     if event.type == pygame.QUIT:
-        #         pygame.quit()
-        #         sys.exit()
-
-            # if a key is down, check if the correct key was pressed
-            # if it is not the correct key, end the game
         if event.type == pygame.KEYDOWN:
             if event.key != correct_key:
                 return False
@@ -69,5 +60,10 @@ class ObstacleController(Controller):
                 the obstacle on the screen.
         """
         if current_obstacle.x_position <= 200:
+            return True
+        return False
+    
+    def restart_input(self, event):
+        if event.type == pygame.KEYDOWN:
             return True
         return False
