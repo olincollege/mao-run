@@ -72,7 +72,7 @@ def test_check_collision_happens_left():
     assert test_controller.check_collision(test_spades_left) == True
 
 # test that the collision is not detected when it should not be
-# from right hand side
+# from left hand side
 def test_check_collision_does_not_happen_left():
     test_spades_left._x_position = 200
     assert test_controller.check_collision(test_spades_left) == False
