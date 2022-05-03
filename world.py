@@ -55,14 +55,9 @@ class MaoRun(world):
     def display_game_over(self):
         self.screen.fill("black")
         self.screen.blit(self.game_over,(150,0))
-        pygame.display.update()
         self.clock.tick(60)
-
-    def display(self, obstacle):
-        self.screen.blit(self.sky_surface,(0,0))
-        self.screen.blit(self.ground_surface,(0,300))
-        self.player.draw(self.screen)
-
+    
+    def display_obstacles(self, obstacle):
         if obstacle.sprite == "spades":
             self.screen.blit(self.spades, (obstacle.x_position, \
                 obstacle.y_position))
@@ -75,6 +70,10 @@ class MaoRun(world):
         elif obstacle.sprite == "hearts":
             self.screen.blit(self.hearts, (obstacle.x_position, \
                 obstacle.y_position))
-        
-        pygame.display.update()
+        self.player.draw(self.screen)
+        self.clock.tick(60)
+
+    def display(self):
+        self.screen.blit(self.sky_surface,(0,0))
+        self.screen.blit(self.ground_surface,(0,300))
         self.clock.tick(60)
