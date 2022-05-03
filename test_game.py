@@ -11,6 +11,8 @@ from game import Game
 
 pygame.init()
 
+pygame.init()
+
 # define variables needed to create test instances
 actions = [pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT]
 possible_obstacles = ["spades", "diamonds", "hearts", "clubs"]
@@ -22,9 +24,11 @@ obstacle_actions = {
 }
 
 # define controller and obstacle for testing
-test_controller = ObstacleController()
+test_controller = ObstacleController(obstacle_actions)
 test_obstacles = [Obstacle(obstacle, obstacle_actions) for obstacle in possible_obstacles]
-test_spades = test_obstacles[0]
+
+# define test game
+game = Game(obstacle_actions)
 
 # set up for testing with user input
 up_arrow = pygame.event.Event(pygame.KEYDOWN, {'unicode': '', 'key': 1073741906, 'mod': 4096, 'scancode': 82, 'window': None})
@@ -33,42 +37,32 @@ left_arrow = pygame.event.Event(pygame.KEYDOWN, {'unicode': '', 'key': 107374190
 right_arrow = pygame.event.Event(pygame.KEYDOWN, {'unicode': '', 'key': 1073741903, 'mod': 4096, 'scancode': 79, 'window': None})
 
 key_input = [up_arrow, down_arrow, left_arrow, right_arrow]
+# for key in key_input:
+#     pygame.event.post(key)
 
 # define test cases
-correct_input_test_cases = [(key_input[i], test_obstacles[i]) for i in range(len(key_input))]
-incorrect_input_test_cases = [(key_input[::-1][i], test_obstacles[i]) for i in range(len(key_input))]
+correct_input_test_cases = [(test_controller, test_obstacles[i]) for i in range(len(test_obstacles))]
+incorrect_input_test_cases = [(test_controller, test_obstacles[::-1][i]) for i in range(len(test_obstacles))]
 
 
-# for check continue, just check that it works when the same obstacle is returned???
+# check continue testing
+# if the correct key is not pressed, make sure that the same obstacle is returned
+# check incorrect up arrow press
+def test_check_continue_incorrect_up():
+    pygame.event.post(up_arrow)
+    assert game.check_continue(test_controller, test_obstacles[1]) == test_obstacles[1]
 
-# TODO: Add tests
+# check incorrect down arrow press
+def test_check_continue_incorrect_down():
+    pygame.event.post(down_arrow)
+    assert game.check_continue(test_controller, test_obstacles[2]) == test_obstacles[2]
 
+# check incorrect left arrow press
+def test_check_continue_incorrect_left():
+    pygame.event.post(left_arrow)
+    assert game.check_continue(test_controller, test_obstacles[3]) == test_obstacles[3]
 
-
-# input testing
-# test that the correct input is detected
-@pytest.mark.parametrize("key,obstacle", correct_input_test_cases)
-def test_interpret_input_correct(key, obstacle):
-    assert test_controller.interpret_input(key, obstacle.action) == True
-
-# test that the incorrect input is detected as incorrect
-@pytest.mark.parametrize("key,obstacle", incorrect_input_test_cases)
-def test_interpret_input_incorrect(key, obstacle):
-    assert test_controller.interpret_input(key, obstacle.action) == False
-
-
-# collision testing
-# test that the collision is detected when it should be
-def test_check_collision_happens():
-    test_spades._x_position = 200
-    assert test_controller.check_collision(test_spades) == True
-
-# test that the collision is not detected when it should not be
-def test_check_collision_does_not_happen():
-    test_spades._x_position = 500
-    assert test_controller.check_collision(test_spades) == False
-
-# test that the collision is detected when obstacle is past the player
-def test_check_collision_happens_at_zero():
-    test_spades._x_position = 0
-    assert test_controller.check_collision(test_spades) == True
+# check incorrect right arrow press
+def test_check_continue_incorrect_right():
+    pygame.event.post(right_arrow)
+    assert game.check_continue(test_controller, test_obstacles[0]) == test_obstacles[0]
