@@ -66,3 +66,9 @@ def test_check_continue_incorrect_left():
 def test_check_continue_incorrect_right():
     pygame.event.post(right_arrow)
     assert game.check_continue(test_controller, test_obstacles[0]) == test_obstacles[0]
+
+
+# check that game over attribute is updated
+def check_game_over():
+    game.game_over()
+    assert game.game_over_called == True

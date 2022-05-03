@@ -6,17 +6,10 @@ from world import MaoRun
 
 class Game:
 
-    # actions = [pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT]
     possible_obstacles = ["spades", "diamonds", "hearts", "clubs"]
 
     def __init__(self, obstacle_actions):
         self._game_over_called = False
-        # self._obstacle_actions = {
-        #     "spades": choice(self.actions),
-        #     "diamonds": choice(self.actions),
-        #     "hearts": choice(self.actions),
-        #     "clubs": choice(self.actions),
-        # }
         self._obstacle_actions = obstacle_actions
     
     @property
@@ -74,13 +67,3 @@ class Game:
         
         # Return the obstacle instance entered as an argument if no keys were pressed
         return obstacle
-
-    def restart(self, control):
-        for event in pygame.event.get():
-            # if the user tries to exit the window, end the game
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            
-            if control.restart_input(control):
-                pass
