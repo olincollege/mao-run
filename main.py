@@ -43,15 +43,26 @@ if __name__ == '__main__':
 
         # have the game continue until it should end
     game_start = False
+    display_instructions = False
     while not game_start:
-        CUR_WORLD.display_intro()
         for event in pygame.event.get():
-            # if the user tries to exit the window, end the game
             if event.type == pygame.KEYDOWN:
-                game_start = True
+                display_instructions = True
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+        if display_instructions:
+            CUR_WORLD.display_instructions()
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN and (event.key == pygame.K_UP 
+                    or event.key == pygame.K_DOWN or event.key == pygame.K_LEFT or
+                    event.key == pygame.K_RIGHT):
+                    game_start = True
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+        else:
+            CUR_WORLD.display_intro()
     while game_start:
         # update the current obstacle by checking if the game should continue
         current_obstacle = game.check_continue(control, current_obstacle)
