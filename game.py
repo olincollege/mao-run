@@ -30,12 +30,8 @@ class Game:
     def game_over(self):
         """"
         Demonstrate that the game is over.
-
-        Update the screen to demonstrate the game is over.
         """
         self._game_over_called = True
-        # pygame.quit()
-        # sys.exit()
 
     def check_continue(self, control, obstacle):
         """
@@ -72,11 +68,11 @@ class Game:
                 else:
                     self.game_over()
         
-        # if the obstacle collides with the player, end the game
+        # If the obstacle collides with the player, end the game
         if control.check_collision(obstacle):
             self.game_over()
         
-        # return the obstacle instance entered as an argument if no keys were pressed
+        # Return the obstacle instance entered as an argument if no keys were pressed
         return obstacle
 
     def restart(self, control):
