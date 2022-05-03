@@ -6,17 +6,23 @@ from world import MaoRun
 
 class Game:
 
-    actions = [pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_DOWN]
+    # actions = [pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT]
     possible_obstacles = ["spades", "diamonds", "hearts", "clubs"]
 
-    def __init__(self):
-        self._obstacle_actions = {
-            "spades": choice(self.actions),
-            "diamonds": choice(self.actions),
-            "hearts": choice(self.actions),
-            "clubs": choice(self.actions),
-        }
+    def __init__(self, obstacle_actions):
+        self._game_over_called = False
+        # self._obstacle_actions = {
+        #     "spades": choice(self.actions),
+        #     "diamonds": choice(self.actions),
+        #     "hearts": choice(self.actions),
+        #     "clubs": choice(self.actions),
+        # }
+        self._obstacle_actions = obstacle_actions
     
+    @property
+    def game_over_called(self):
+        return self._game_over_called
+
     @property
     def obstacle_actions(self):
         return self._obstacle_actions
@@ -27,10 +33,9 @@ class Game:
 
         Update the screen to demonstrate the game is over.
         """
-        print("game over")
-        pygame.quit()
-        sys.exit()
-        # create a method in world that will display game over when called
+        self._game_over_called = True
+        # pygame.quit()
+        # sys.exit()
 
     def check_continue(self, control, obstacle):
         """
@@ -74,3 +79,12 @@ class Game:
         # return the obstacle instance entered as an argument if no keys were pressed
         return obstacle
 
+    def restart(self, control):
+        for event in pygame.event.get():
+            # if the user tries to exit the window, end the game
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            
+            if control.restart_input(control):
+                pass
