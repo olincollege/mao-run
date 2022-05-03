@@ -5,11 +5,11 @@ from obstacle import Obstacle
 from world import MaoRun
 
 class Game:
-
     actions = [pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_DOWN]
     possible_obstacles = ["spades", "diamonds", "hearts", "clubs"]
 
     def __init__(self):
+        self.called = False
         self._obstacle_actions = {
             "spades": choice(self.actions),
             "diamonds": choice(self.actions),
@@ -27,10 +27,9 @@ class Game:
 
         Update the screen to demonstrate the game is over.
         """
-        print("game over")
-        pygame.quit()
-        sys.exit()
-        # create a method in world that will display game over when called
+        self.called = True
+        # pygame.quit()
+        # sys.exit()
 
     def check_continue(self, control, obstacle):
         """

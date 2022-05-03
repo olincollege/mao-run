@@ -25,8 +25,10 @@ if __name__ == '__main__':
     # Initialize controller
     control = ObstacleController()
 
-
     while True:
-        CUR_WORLD.display(current_obstacle)
         current_obstacle = game.check_continue(control, current_obstacle)
         current_obstacle.update_position()
+        if game.called:
+            CUR_WORLD.display_game_over()
+        else:
+            CUR_WORLD.display(current_obstacle)

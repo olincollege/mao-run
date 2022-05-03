@@ -19,6 +19,7 @@ class world(ABC):
         # Initialize a player
         self.player = player
 
+        # Initialize sprites
         self.hearts = pygame.image.load("Sprites/hearts.png")
         self.heart_rect = self.hearts.get_rect(midbottom = (400,300))
 
@@ -31,7 +32,9 @@ class world(ABC):
         self.diamonds = pygame.image.load("Sprites/diamonds.png")
         self.diamonds_rect = self.diamonds.get_rect(midbottom = (300,300))
 
+        # Initialize a game over screen
         self.game_over = pygame.image.load("Sprites/gameover.png")
+        self.game_over = pygame.transform.scale(self.game_over, (500,400))
         self.clock = pygame.time.Clock()
     
     @abstractmethod
@@ -50,12 +53,14 @@ class MaoRun(world):
         pygame.display.set_caption('Mao Run')
 
     def display_game_over(self):
-        self.screen.blit(self.game_over,(0,0))
-        
+        self.screen.fill("black")
+        self.screen.blit(self.game_over,(150,0))
+        pygame.display.update()
+        self.clock.tick(60)
+
     def display(self, obstacle):
         self.screen.blit(self.sky_surface,(0,0))
         self.screen.blit(self.ground_surface,(0,300))
-        # self.screen.blit(self.joker,(80,200))
         self.player.draw(self.screen)
 
         if obstacle.sprite == "spades":
@@ -70,6 +75,6 @@ class MaoRun(world):
         elif obstacle.sprite == "hearts":
             self.screen.blit(self.hearts, (obstacle.x_position, \
                 obstacle.y_position))
-
+        
         pygame.display.update()
         self.clock.tick(60)

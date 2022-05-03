@@ -1,3 +1,7 @@
+"""
+Contro
+"""
+
 from abc import ABC, abstractmethod
 import pygame
 import sys
