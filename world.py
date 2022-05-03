@@ -41,9 +41,13 @@ class world(ABC):
         self.diamonds = pygame.image.load("Sprites/diamonds.png")
         self.diamonds_rect = self.diamonds.get_rect(midbottom = (300,300))
 
-        # Initialize a game over screen
+        # Initialize the game over screen
         self.game_over = pygame.image.load("Sprites/gameover.png")
         self.game_over = pygame.transform.scale(self.game_over, (500,400))
+
+        # Initialize the instructions screen
+        self.instructions = pygame.image.load("Sprites/instructionsscreen.png")
+        self.instructions = pygame.transform.scale(self.instructions, (400,400))
         
         self.clock = pygame.time.Clock()
     
@@ -74,6 +78,15 @@ class MaoRun(world):
         """
         self.screen.fill("black")
         self.screen.blit(self.intro,(200,0))
+        self.clock.tick(60)
+        pygame.display.update()
+
+    def display_instructions (self):
+        """
+        Insert Docstring
+        """
+        self.screen.fill("black")
+        self.screen.blit(self.instructions,(200,0))
         self.clock.tick(60)
         pygame.display.update()
 
