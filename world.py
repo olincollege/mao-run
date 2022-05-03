@@ -13,14 +13,18 @@ class world(ABC):
         """
         Insert Docstring
         """
-        # Initialize a sky surface
-        self.sky_surface = pygame.Surface((800,300))
-        self.sky_surface.fill('Blue')
+        # Initialize the intro screen
+        self.intro = pygame.image.load("Sprites/introscreen.png")
+        self.intro = pygame.transform.scale(self.intro, (400,400))
 
-        # Initialize a ground surface
-        self.ground_surface = pygame.Surface((800,100))
-        self.ground_surface.fill('Green')
-        
+        # Initialize the background screen
+        self.background = pygame.image.load("Sprites/backgroundscreen.png")
+        self.background = pygame.transform.scale(self.background, (800,400))
+
+        # Initialize the restart screen
+        self.restart = pygame.image.load("Sprites/restartscreen.png")
+        self.restart = pygame.transform.scale(self.restart, (400,400))
+
         # Initialize a player
         self.player = player
 
@@ -40,6 +44,7 @@ class world(ABC):
         # Initialize a game over screen
         self.game_over = pygame.image.load("Sprites/gameover.png")
         self.game_over = pygame.transform.scale(self.game_over, (500,400))
+        
         self.clock = pygame.time.Clock()
     
     @abstractmethod
@@ -63,6 +68,15 @@ class MaoRun(world):
         self.screen = pygame.display.set_mode((800,400))
         pygame.display.set_caption('Mao Run')
 
+    def display_intro (self):
+        """
+        Insert Docstring
+        """
+        self.screen.fill("black")
+        self.screen.blit(self.intro,(200,0))
+        self.clock.tick(60)
+        pygame.display.update()
+
     def display_game_over(self):
         """
         Insert Docstring
@@ -76,7 +90,8 @@ class MaoRun(world):
         """
         Insert Docstring
         """
-        self.screen.fill("red")
+        self.screen.fill("black")
+        self.screen.blit(self.restart, (200,0))
         self.clock.tick(60)
         pygame.display.update()
     
@@ -103,6 +118,5 @@ class MaoRun(world):
         """
         Insert Docstring
         """
-        self.screen.blit(self.sky_surface,(0,0))
-        self.screen.blit(self.ground_surface,(0,300))
+        self.screen.blit(self.background,(0,0))
         self.clock.tick(60)

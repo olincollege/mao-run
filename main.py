@@ -42,7 +42,17 @@ if __name__ == '__main__':
     #     print(game.game_over_called)
 
         # have the game continue until it should end
-    while True:
+    game_start = False
+    while not game_start:
+        CUR_WORLD.display_intro()
+        for event in pygame.event.get():
+            # if the user tries to exit the window, end the game
+            if event.type == pygame.KEYDOWN:
+                game_start = True
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+    while game_start:
         # update the current obstacle by checking if the game should continue
         current_obstacle = game.check_continue(control, current_obstacle)
         # move the current obstacle
@@ -50,13 +60,11 @@ if __name__ == '__main__':
 
         # if the game should be over, restart the game and break the loop
         if game.game_over_called:
-            # print("restart")
-            if num_rounds < 3:
+            if num_rounds < 2:
                 CUR_WORLD.display_restart()
                 for event in pygame.event.get():
                     # if the user tries to exit the window, end the game
                     if event.type == pygame.KEYDOWN:
-                        print('yes')
                         game = Game(obstacle_actions)
                         current_obstacle = Obstacle(choice(game.possible_obstacles), game.obstacle_actions)
                         num_rounds += 1
