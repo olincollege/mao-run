@@ -49,10 +49,11 @@ class world(ABC):
         self.instructions = pygame.image.load("Sprites/instructionsscreen.png")
         self.instructions = pygame.transform.scale(self.instructions, (400,400))
 
-        # Set up score display
+        # Set up font for score display
         self.font = pygame.font.Font(None, 32)
         
-        
+        # Initialize game icon
+        self.maorun_icon = pygame.image.load("Sprites/joker2.png")
         self.clock = pygame.time.Clock()
     
     @abstractmethod
@@ -75,6 +76,7 @@ class MaoRun(world):
         # Initialize a screen
         self.screen = pygame.display.set_mode((800,400))
         pygame.display.set_caption('Mao Run')
+        pygame.display.set_icon(self.maorun_icon)
 
     def display_intro (self):
         """
