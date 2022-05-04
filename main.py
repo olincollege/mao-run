@@ -1,3 +1,7 @@
+"""
+Insert Docstring Here
+"""
+
 import sys
 import pygame
 from random import choice
@@ -8,17 +12,17 @@ from obstacle import Obstacle
 from controller import ObstacleController
 
 if __name__ == '__main__':
+    # Starts pygame
     pygame.init()
 
-    # initialize constants
-    actions = [pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT]
-    obstacle_actions = {
-            "spades": choice(actions),
-            "diamonds": choice(actions),
-            "hearts": choice(actions),
-            "clubs": choice(actions),
+    # Initialize constants
+    ACTIONS = [pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT]
+    OBSTACLE_ACTIONS = {
+            "spades": choice(ACTIONS),
+            "diamonds": choice(ACTIONS),
+            "hearts": choice(ACTIONS),
+            "clubs": choice(ACTIONS),
     }
-    num_rounds = 0
 
     # Initialize player
     player = pygame.sprite.GroupSingle()
@@ -27,24 +31,25 @@ if __name__ == '__main__':
     # Initialize world
     CUR_WORLD = MaoRun(player)
 
-    #initialize game
-    game = Game(obstacle_actions)
+    # Initialize game
+    game = Game(OBSTACLE_ACTIONS)
 
     # Initialize current obstacle
     current_obstacle = Obstacle(choice(game.possible_obstacles), game.obstacle_actions)
 
     # Initialize controller
-    control = ObstacleController(obstacle_actions)
+    control = ObstacleController(OBSTACLE_ACTIONS)
 
-    # # allow the users three chances to play the game
-    # while num_rounds < 3:
-    #     num_rounds += 1
-    #     print(game.game_over_called)
-
-        # have the game continue until it should end
+    # Initialize game states indicator booleans
     game_start = False
     display_instructions = False
+
+    # Initialize counter for player's restart option
+    num_rounds = 0
+
+    # Operate the starting state of the game (starting screen + instructions)
     while not game_start:
+        # Press any key to display instructions
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 display_instructions = True
@@ -53,6 +58,7 @@ if __name__ == '__main__':
                 sys.exit()
         if display_instructions:
             CUR_WORLD.display_instructions()
+            # Press any arrow key to start game
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN and (event.key == pygame.K_UP 
                     or event.key == pygame.K_DOWN or event.key == pygame.K_LEFT or
@@ -61,28 +67,39 @@ if __name__ == '__main__':
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+        # Display intro screen if no input/irregularity is received
         else:
             CUR_WORLD.display_intro()
+    
+    # Operate in game logic and displays
     while game_start:
-        # update the current obstacle by checking if the game should continue
+        # Update the current obstacle by checking if the game should continue
         current_obstacle = game.check_continue(control, current_obstacle)
-        # move the current obstacle
+        # Move the current obstacle
         current_obstacle.update_position()
 
-        # if the game should be over, restart the game and break the loop
+        # If this iteration of game should be over, restart the game with a new game instance
         if game.game_over_called:
-            if num_rounds < 2:
+            # If the game is replayed less than 30 times, display restart screen
+            if num_rounds < 30:
                 CUR_WORLD.display_restart()
                 for event in pygame.event.get():
-                    # if the user tries to exit the window, end the game
                     if event.type == pygame.KEYDOWN:
-                        game = Game(obstacle_actions)
+                        # Initialize new game state + obstacle
+                        game = Game(OBSTACLE_ACTIONS)
                         current_obstacle = Obstacle(choice(game.possible_obstacles), game.obstacle_actions)
+                        # Keep a tally of the amount of restarts
                         num_rounds += 1
+                        # Jump to next loop
                         continue
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+                        sys.exit()
+            # If the game is replayed more than 30 times, display game over screen
             else:
                 CUR_WORLD.display_game_over()
-        # else, update the display
+
+        # Else, update the display and continue this iretation of the game
         else:
             CUR_WORLD.display()
             CUR_WORLD.display_obstacles(current_obstacle)
