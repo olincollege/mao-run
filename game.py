@@ -6,7 +6,8 @@ from world import MaoRun
 
 class Game:
 
-    possible_obstacles = ["spades", "diamonds", "hearts", "clubs"]
+    POSSIBLE_OBSTACLES = ["spades", "diamonds", "hearts", "clubs"]
+    score = 0
 
     def __init__(self, obstacle_actions):
         self._game_over_called = False
@@ -25,6 +26,33 @@ class Game:
         Demonstrate that the game is over.
         """
         self._game_over_called = True
+
+    def exit_window(self, event):
+        """
+        Allow the user to turn off the game windown when clicking the
+        'X' button.
+
+        Args:
+            event: 
+        """
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+    
+    def press_any_arrow_key(self, event):
+        """
+        Check if the player is pressing one of the arrow keys.
+        Args:
+            event: 
+
+        Returns
+            A boolean statement representing whether the correct key is pressed.
+        """
+        if event.type == pygame.KEYDOWN and (event.key == pygame.K_UP 
+                or event.key == pygame.K_DOWN or event.key == pygame.K_LEFT or
+                event.key == pygame.K_RIGHT):
+            return True
+        return False
 
     def check_continue(self, control, obstacle):
         """
@@ -45,9 +73,7 @@ class Game:
         """
         for event in pygame.event.get():
             # if the user tries to exit the window, end the game
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
+            self.exit_window(event)
             
             # determine whether the user pressed the correct key
             pressed_correct_key = control.interpret_input(event, obstacle.action)
@@ -56,8 +82,10 @@ class Game:
             # obstacle instance
             if event.type == pygame.KEYDOWN:
                 if pressed_correct_key:
+                    self.score += 1
+                    # print(self.score)
                     print(obstacle.sprite)
-                    return Obstacle(choice(self.possible_obstacles), self.obstacle_actions)
+                    return Obstacle(choice(self.POSSIBLE_OBSTACLES), self.obstacle_actions)
                 else:
                     self.game_over()
         

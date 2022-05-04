@@ -48,6 +48,10 @@ class world(ABC):
         # Initialize the instructions screen
         self.instructions = pygame.image.load("Sprites/instructionsscreen.png")
         self.instructions = pygame.transform.scale(self.instructions, (400,400))
+
+        # Set up score display
+        self.font = pygame.font.Font(None, 32)
+        
         
         self.clock = pygame.time.Clock()
     
@@ -81,7 +85,7 @@ class MaoRun(world):
         self.clock.tick(60)
         pygame.display.update()
 
-    def display_instructions (self):
+    def display_instructions(self):
         """
         Insert Docstring
         """
@@ -90,6 +94,14 @@ class MaoRun(world):
         self.clock.tick(60)
         pygame.display.update()
 
+    def display_score(self, score):
+        """
+        Insert Docstring
+        """
+        self.text = self.font.render(score, False, 'Green')
+        self.screen.blit(self.text,(365,300))
+        self.clock.tick(60)
+
     def display_game_over(self):
         """
         Insert Docstring
@@ -97,7 +109,6 @@ class MaoRun(world):
         self.screen.fill("#5C5755")
         self.screen.blit(self.game_over,(150,0))
         self.clock.tick(60)
-        pygame.display.update()
     
     def display_restart(self):
         """
