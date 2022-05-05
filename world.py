@@ -3,6 +3,7 @@ View file. Deals with all rendering and displaying tasks.
 """
 
 from abc import ABC, abstractmethod
+from numpy import character
 import pygame
 
 class world(ABC):
@@ -51,11 +52,11 @@ class world(ABC):
 
         # Set up font for score display
         self.font = pygame.font.Font(None, 32)
-        
+
         # Initialize game icon
         self.maorun_icon = pygame.image.load("Sprites/joker2.png")
         self.clock = pygame.time.Clock()
-    
+
     @abstractmethod
     def display():
         """
@@ -67,14 +68,16 @@ class MaoRun(world):
     """
     Insert Docstring
     """
-    def __init__(self, Character):
+    def __init__(self, character):
         """
         Insert Docstring
         """
-        super().__init__(Character)
+        super().__init__(character)
 
         # Initialize a screen
         self.screen = pygame.display.set_mode((800,400))
+        # infoObject = pygame.display.Info()
+        # self.screen = pygame.display.set_mode((infoObject.current_w, infoObject.current_h))
         pygame.display.set_caption('Mao Run')
         pygame.display.set_icon(self.maorun_icon)
 
@@ -121,7 +124,7 @@ class MaoRun(world):
         self.clock.tick(60)
         pygame.display.update()
     
-    def display_obstacles(self, obstacle):
+    def display_sprites(self, obstacle):
         """
         Insert Docstring
         """
@@ -138,6 +141,7 @@ class MaoRun(world):
             self.screen.blit(self.hearts, (obstacle.x_position, \
                 obstacle.y_position))
         self.player.draw(self.screen)
+        self.player.update()
         self.clock.tick(60)
 
     def display(self):

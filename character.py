@@ -7,5 +7,22 @@ class Character(pygame.sprite.Sprite):
 
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load("Sprites/joker2.png")
-        self.rect = self.image.get_rect(midbottom = (400,300))
+        # Load player images
+        self.joker_1 = pygame.image.load("Sprites/joker2.png")
+        self.joker_2 = pygame.image.load("Sprites/clubs.png")
+        # Set up animation for player
+        self.joker_moves = [self.joker_1, self.joker_2]
+        self.joker_index = 0
+
+        self.image = self.joker_moves[int(self.joker_index)]
+        self.rect = self.image.get_rect(midbottom = (400,290))
+    
+    def joker_animation(self):
+        self.joker_index += 0.15
+        if self.joker_index >= len(self.joker_moves): self.joker_index = 0
+        self.image = self.joker_moves[int(self.joker_index)]
+        
+    def update(self):
+        self.joker_animation()
+
+        
