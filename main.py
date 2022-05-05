@@ -97,5 +97,5 @@ if __name__ == '__main__':
             if game.score == randint(12,100):
                     current_obstacle.x_velocity["left"] -= randint(1,19)/10
             CUR_WORLD.display()
-            CUR_WORLD.display_obstacles(current_obstacle)
+            CUR_WORLD.display_sprites(current_obstacle)
             pygame.display.update()
