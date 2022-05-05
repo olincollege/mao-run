@@ -1,9 +1,9 @@
 """
 Insert Docstring Here
 """
-import sys
 import pygame
-from random import choice
+from random import choice, randint
+from scipy import rand
 from world import MaoRun
 from game import Game
 from character import Character
@@ -73,29 +73,29 @@ if __name__ == '__main__':
         current_obstacle = game.check_continue(control, current_obstacle)
         # Move the current obstacle
         current_obstacle.update_position()
-
-        # If this iteration of game should be over, restart the game with a new game instance
+        # Display game over screen when the player pressed the 'ESC' key
         if game.game_over_called:
+            CUR_WORLD.display_game_over()
+            CUR_WORLD.display_score("High Score: " + str(best_score))
+            pygame.display.update()
+        # If this iteration of game should be over, restart the game with a new game instance
+        elif game.round_over_called:
             # If the game is replayed less than 30 times, display restart screen
-            if round_num < 3:
-                CUR_WORLD.display_restart()
-                for event in pygame.event.get():
-                    if event.type == pygame.KEYDOWN:
-                        # Initialize new game state + obstacle
-                        game = Game(OBSTACLE_ACTIONS)
-                        current_obstacle = Obstacle(choice(game.POSSIBLE_OBSTACLES), game.obstacle_actions)
-                        # Keep a tally of the amount of restarts
-                        round_num += 1
-                        # Jump to next loop
-                        continue
-                    game.exit_window(event)
-            # If the game is replayed more than 30 times, display game over screen
-            else:
-                CUR_WORLD.display_game_over()
-                CUR_WORLD.display_score("High Score: " + str(best_score))
-                pygame.display.update()
+            CUR_WORLD.display_restart()
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    # Initialize new game state + obstacle
+                    game = Game(OBSTACLE_ACTIONS)
+                    current_obstacle = Obstacle(choice(game.POSSIBLE_OBSTACLES), game.obstacle_actions)
+                    # Keep a tally of the amount of restarts
+                    round_num += 1
+                    # Jump to next loop
+                    continue
+                game.exit_window(event)
         # Else, update the display and continue this iretation of the game
         else:
+            if game.score == randint(12,100):
+                    current_obstacle.x_velocity["left"] -= randint(1,19)/10
             CUR_WORLD.display()
             CUR_WORLD.display_obstacles(current_obstacle)
             pygame.display.update()

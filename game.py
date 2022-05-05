@@ -2,7 +2,6 @@ import pygame
 import sys
 from random import choice
 from obstacle import Obstacle
-from world import MaoRun
 
 class Game:
 
@@ -10,9 +9,14 @@ class Game:
     score = 0
 
     def __init__(self, obstacle_actions):
+        self._round_over_called = False
         self._game_over_called = False
         self._obstacle_actions = obstacle_actions
     
+    @property
+    def round_over_called(self):
+        return self._round_over_called
+
     @property
     def game_over_called(self):
         return self._game_over_called
@@ -20,6 +24,12 @@ class Game:
     @property
     def obstacle_actions(self):
         return self._obstacle_actions
+    
+    def round_over(self):
+        """"
+        Demonstrate that the round is over.
+        """
+        self._round_over_called = True
     
     def game_over(self):
         """"
@@ -59,7 +69,7 @@ class Game:
         Check whether the game should continue.
 
         If the user presses the correct key, the game continues.
-        If not, game_over is called and the game restarts.
+        If not, round_over is called and the game restarts.
 
         Args:
             control: An ObstacleController instance for the current game.
@@ -74,7 +84,9 @@ class Game:
         for event in pygame.event.get():
             # if the user tries to exit the window, end the game
             self.exit_window(event)
-            
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                self.game_over()
+            self.exit_window(event)
             # determine whether the user pressed the correct key
             pressed_correct_key = control.interpret_input(event, obstacle.action)
 
@@ -87,11 +99,11 @@ class Game:
                     print(obstacle.sprite)
                     return Obstacle(choice(self.POSSIBLE_OBSTACLES), self.obstacle_actions)
                 else:
-                    self.game_over()
+                    self.round_over()
         
         # If the obstacle collides with the player, end the game
         if control.check_collision(obstacle):
-            self.game_over()
+            self.round_over()
         
         # Return the obstacle instance entered as an argument if no keys were pressed
         return obstacle
