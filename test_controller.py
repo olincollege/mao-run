@@ -24,16 +24,16 @@ obstacle_actions = {
 # define controller and obstacle for testing
 test_controller = ObstacleController(obstacle_actions)
 test_obstacles = [Obstacle(obstacle, obstacle_actions) for obstacle in possible_obstacles]
-test_spades_right = Obstacle("spades", obstacle_actions)
-test_spades_right._start_position = "right"
-test_spades_left = Obstacle("spades", obstacle_actions)
-test_spades_left._start_position = "left"
+test_spades_right = Obstacle("spades", obstacle_actions, "right")
+test_spades_left = Obstacle("spades", obstacle_actions, "left")
+
 
 # set up for testing with user input
 up_arrow = pygame.event.Event(pygame.KEYDOWN, {'unicode': '', 'key': 1073741906, 'mod': 4096, 'scancode': 82, 'window': None})
 down_arrow = pygame.event.Event(pygame.KEYDOWN, {'unicode': '', 'key': 1073741905, 'mod': 4096, 'scancode': 81, 'window': None})
 left_arrow = pygame.event.Event(pygame.KEYDOWN, {'unicode': '', 'key': 1073741904, 'mod': 4096, 'scancode': 80, 'window': None})
 right_arrow = pygame.event.Event(pygame.KEYDOWN, {'unicode': '', 'key': 1073741903, 'mod': 4096, 'scancode': 79, 'window': None})
+space_bar = pygame.event.Event(pygame.KEYDOWN, {'unicode': ' ', 'key': 32, 'mod': 4096, 'scancode': 44, 'window': None})
 
 key_input = [up_arrow, down_arrow, left_arrow, right_arrow]
 
@@ -68,7 +68,9 @@ def test_check_collision_does_not_happen_right():
 
 # test that the collision is detected when it should be from left
 def test_check_collision_happens_left():
-    test_spades_left._x_position = 350
+    test_spades_left._x_position = 300
+    print(test_spades_left.collision_position)
+    print(test_controller.check_collision(test_spades_left))
     assert test_controller.check_collision(test_spades_left) == True
 
 # test that the collision is not detected when it should not be
@@ -76,3 +78,13 @@ def test_check_collision_happens_left():
 def test_check_collision_does_not_happen_left():
     test_spades_left._x_position = 200
     assert test_controller.check_collision(test_spades_left) == False
+
+
+# test press any arrow key function
+# check that a key press is detected
+def test_press_any_arrow_key_with_input():
+    assert test_controller.press_any_arrow_key(right_arrow) == True
+
+# check that when a key other than arrow key is pressed, false is returned
+def test_press_any_arrow_key_no_input():
+    assert test_controller.press_any_arrow_key(space_bar) == False

@@ -69,6 +69,11 @@ def test_check_continue_incorrect_right():
 
 
 # check that game over attribute is updated
-def check_game_over():
+def test_check_game_over():
     game.game_over()
     assert game.game_over_called == True
+
+# check that round over attribute is updated
+def test_round_over():
+    game.round_over()
+    assert game.round_over_called == True
