@@ -31,7 +31,7 @@ class Obstacle:
     STARTING_LOCATION = {"left": 0, "right": 800}
     COLLISION_LOCATION = {"left": 300, "right": 425}
 
-    def __init__(self, sprite, actions, start_position=choice(["left", "right"])):
+    def __init__(self, sprite, actions, start_position=None):
         """
         
         Args:
@@ -42,6 +42,8 @@ class Obstacle:
                 at which to start; the default value is a random choice.
         """
         self._sprite = sprite
+        if start_position is None:
+            start_position = choice(["left", "right"])
         self._start_position = start_position
         self._x_position = self.STARTING_LOCATION[self.start_position]
         self._y_position = 200
