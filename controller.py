@@ -4,17 +4,17 @@ Create a controller for the game.
 
 from abc import ABC, abstractmethod
 import pygame
-import sys
 from game import Game
 
 
 class Controller(ABC):
     """
     Create an abstract base class for the controller.
-    
+
     Attributes:
         _game: an instance of Game.
     """
+
     def __init__(self, obstacle_actions):
         """
         Create an instance of controller.
@@ -34,7 +34,7 @@ class Controller(ABC):
         return self._game
 
     @abstractmethod
-    def interpret_input():
+    def interpret_input(self):
         """
         Create an abstract method to interpret input.
         """
@@ -54,7 +54,7 @@ class ObstacleController(Controller):
             event: pygame event referring to user input.
             correct_key: Pygame constant referring to the key that
                 needed to be pressed for the given obstacle.
-        
+
         Returns:
             A boolean value referring to whether the correct key was pressed.
         """
@@ -71,12 +71,12 @@ class ObstacleController(Controller):
         Args:
             current_obstacle: An instance of obstacle that represents
                 the obstacle on the screen.
-        
+
         Returns:
             Boolean value determined from current_obstacle.has_collided()
         """
         return current_obstacle.has_collided()
-    
+
     def press_any_arrow_key(self, event):
         """
         Check if the player is pressing one of the arrow keys.
@@ -86,8 +86,9 @@ class ObstacleController(Controller):
         Returns
             A boolean statement representing whether the correct key is pressed.
         """
-        if event.type == pygame.KEYDOWN and (event.key == pygame.K_UP 
-                or event.key == pygame.K_DOWN or event.key == pygame.K_LEFT or
-                event.key == pygame.K_RIGHT):
+        if event.type == pygame.KEYDOWN and (event.key == pygame.K_UP
+                                             or event.key == pygame.K_DOWN or
+                                             event.key == pygame.K_LEFT or
+                                             event.key == pygame.K_RIGHT):
             return True
         return False

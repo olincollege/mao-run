@@ -1,3 +1,4 @@
 [FORMAT]
 
 max-line-length=80
+disable=unnecessary-pass,duplicate-code,E1101,invalid-name

@@ -1,8 +1,8 @@
 """
 Insert Docstring Here
 """
-import pygame
 from random import choice, randint
+import pygame
 from world import MaoRun
 from game import Game
 from character import Character
@@ -33,7 +33,8 @@ if __name__ == '__main__':
     game = Game(OBSTACLE_ACTIONS)
 
     # Initialize current obstacle
-    current_obstacle = Obstacle(choice(game.POSSIBLE_OBSTACLES), game.obstacle_actions)
+    current_obstacle = Obstacle(
+        choice(game.POSSIBLE_OBSTACLES), game.obstacle_actions)
 
     # Initialize controller
     control = ObstacleController(OBSTACLE_ACTIONS)
@@ -63,7 +64,7 @@ if __name__ == '__main__':
         # Display intro screen if no input/irregularity is received
         else:
             CUR_WORLD.display_intro()
-    
+
     # Operate in game logic and displays
     while game_start:
         if game.score > best_score:
@@ -77,7 +78,8 @@ if __name__ == '__main__':
             CUR_WORLD.display_game_over()
             CUR_WORLD.display_score("High Score: " + str(best_score))
             pygame.display.update()
-        # If this iteration of game should be over, restart the game with a new game instance
+        # If this iteration of game should be over, restart the game with
+        # a new game instance
         elif game.round_over_called:
             # If the game is replayed less than 30 times, display restart screen
             CUR_WORLD.display_restart()
@@ -85,7 +87,8 @@ if __name__ == '__main__':
                 if event.type == pygame.KEYDOWN:
                     # Initialize new game state + obstacle
                     game = Game(OBSTACLE_ACTIONS)
-                    current_obstacle = Obstacle(choice(game.POSSIBLE_OBSTACLES), game.obstacle_actions)
+                    current_obstacle = Obstacle(
+                        choice(game.POSSIBLE_OBSTACLES), game.obstacle_actions)
                     # Keep a tally of the amount of restarts
                     round_num += 1
                     # Jump to next loop
@@ -93,8 +96,9 @@ if __name__ == '__main__':
                 game.exit_window(event)
         # Else, update the display and continue this iretation of the game
         else:
-            if best_score == randint(12,100):
-                current_obstacle.X_VELOCITY["left"] -= randint(1,17)/10
+            if best_score == randint(12, 100):
+                current_obstacle.X_VELOCITY["left"] -= randint(1, 17)/10
+                current_obstacle.X_VELOCITY["right"] += randint(1, 17)/10
             CUR_WORLD.display()
             CUR_WORLD.display_sprites(current_obstacle)
             pygame.display.update()

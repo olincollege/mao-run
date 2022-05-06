@@ -3,6 +3,7 @@ Information and functionality of the player sprite.
 """
 import pygame
 
+
 class Character(pygame.sprite.Sprite):
     """
     Create the character sprite for the game.
@@ -29,20 +30,19 @@ class Character(pygame.sprite.Sprite):
         self.joker_index = 0
 
         self.image = self.joker_moves[int(self.joker_index)]
-        self.rect = self.image.get_rect(midbottom = (400,290))
-    
+        self.rect = self.image.get_rect(midbottom=(400, 290))
+
     def joker_animation(self):
         """
         Animate the joker sprite
         """
         self.joker_index += 0.15
-        if self.joker_index >= len(self.joker_moves): self.joker_index = 0
+        if self.joker_index >= len(self.joker_moves):
+            self.joker_index = 0
         self.image = self.joker_moves[int(self.joker_index)]
-        
+
     def update(self):
         """
         Update the joker sprite
         """
         self.joker_animation()
-
-        

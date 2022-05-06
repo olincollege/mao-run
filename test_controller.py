@@ -4,10 +4,8 @@ Unit tests for controller
 
 import pytest
 import pygame
-from random import choice
 from controller import ObstacleController
 from obstacle import Obstacle
-from game import Game
 
 pygame.init()
 
@@ -23,68 +21,103 @@ obstacle_actions = {
 
 # define controller and obstacle for testing
 test_controller = ObstacleController(obstacle_actions)
-test_obstacles = [Obstacle(obstacle, obstacle_actions) for obstacle in possible_obstacles]
+test_obstacles = [Obstacle(obstacle, obstacle_actions)
+                  for obstacle in possible_obstacles]
 test_spades_right = Obstacle("spades", obstacle_actions, "right")
 test_spades_left = Obstacle("spades", obstacle_actions, "left")
 
 
 # set up for testing with user input
-up_arrow = pygame.event.Event(pygame.KEYDOWN, {'unicode': '', 'key': 1073741906, 'mod': 4096, 'scancode': 82, 'window': None})
-down_arrow = pygame.event.Event(pygame.KEYDOWN, {'unicode': '', 'key': 1073741905, 'mod': 4096, 'scancode': 81, 'window': None})
-left_arrow = pygame.event.Event(pygame.KEYDOWN, {'unicode': '', 'key': 1073741904, 'mod': 4096, 'scancode': 80, 'window': None})
-right_arrow = pygame.event.Event(pygame.KEYDOWN, {'unicode': '', 'key': 1073741903, 'mod': 4096, 'scancode': 79, 'window': None})
-space_bar = pygame.event.Event(pygame.KEYDOWN, {'unicode': ' ', 'key': 32, 'mod': 4096, 'scancode': 44, 'window': None})
+up_arrow = pygame.event.Event(pygame.KEYDOWN, {
+                              'unicode': '', 'key': 1073741906, 'mod': 4096,
+                              'scancode': 82, 'window': None})
+down_arrow = pygame.event.Event(pygame.KEYDOWN, {
+                                'unicode': '', 'key': 1073741905, 'mod': 4096,
+                                'scancode': 81, 'window': None})
+left_arrow = pygame.event.Event(pygame.KEYDOWN, {
+                                'unicode': '', 'key': 1073741904, 'mod': 4096,
+                                'scancode': 80, 'window': None})
+right_arrow = pygame.event.Event(pygame.KEYDOWN, {
+                                 'unicode': '', 'key': 1073741903, 'mod': 4096,
+                                 'scancode': 79, 'window': None})
+space_bar = pygame.event.Event(pygame.KEYDOWN, {
+                               'unicode': ' ', 'key': 32, 'mod': 4096,
+                               'scancode': 44, 'window': None})
 
 key_input = [up_arrow, down_arrow, left_arrow, right_arrow]
 
 # define test cases
-correct_input_test_cases = [(key_input[i], test_obstacles[i]) for i in range(len(key_input))]
-incorrect_input_test_cases = [(key_input[::-1][i], test_obstacles[i]) for i in range(len(key_input))]
+correct_input_test_cases = [(key_input[i], test_obstacles[i])
+                            for i in range(len(key_input))]
+incorrect_input_test_cases = [
+    (key_input[::-1][i], test_obstacles[i]) for i in range(len(key_input))]
 
 
 # input testing
-# test that the correct input is detected
 @pytest.mark.parametrize("key,obstacle", correct_input_test_cases)
 def test_interpret_input_correct(key, obstacle):
-    assert test_controller.interpret_input(key, obstacle.action) == True
+    """
+    Test that the correct input is detected.
 
-# test that the incorrect input is detected as incorrect
+    Args:
+        key: Pygame event representing key press.
+        obstacle: an instance of Obstacle.
+    """
+    assert test_controller.interpret_input(key, obstacle.action) is True
+
 @pytest.mark.parametrize("key,obstacle", incorrect_input_test_cases)
 def test_interpret_input_incorrect(key, obstacle):
-    assert test_controller.interpret_input(key, obstacle.action) == False
+    """
+    Test that the incorrect input is detected as incorrect.
+
+    Args:
+        key: Pygame event representing key press.
+        obstacle: an instance of Obstacle.
+    """
+    assert test_controller.interpret_input(key, obstacle.action) is False
 
 
 # collision testing
-# test that the collision is detected when it should be from right
 def test_check_collision_happens_right():
-    test_spades_right._x_position = 400
-    assert test_controller.check_collision(test_spades_right) == True
+    """
+    Test that the collision is detected when it should be from right.
+    """
+    test_spades_right._x_position = 400 # pylint: disable=protected-access
+    assert test_controller.check_collision(test_spades_right) is True
 
-# test that the collision is not detected when it should not be
-# from right hand side
 def test_check_collision_does_not_happen_right():
-    test_spades_right._x_position = 500
-    assert test_controller.check_collision(test_spades_right) == False
+    """
+    Test that the collision is not detected when it should not be
+    from right hand side.
+    """
+    test_spades_right._x_position = 500 # pylint: disable=protected-access
+    assert test_controller.check_collision(test_spades_right) is False
 
-# test that the collision is detected when it should be from left
 def test_check_collision_happens_left():
-    test_spades_left._x_position = 300
-    print(test_spades_left.collision_position)
-    print(test_controller.check_collision(test_spades_left))
-    assert test_controller.check_collision(test_spades_left) == True
+    """
+    Test that the collision is detected when it should be from left.
+    """
+    test_spades_left._x_position = 300 # pylint: disable=protected-access
+    assert test_controller.check_collision(test_spades_left) is True
 
-# test that the collision is not detected when it should not be
-# from left hand side
 def test_check_collision_does_not_happen_left():
-    test_spades_left._x_position = 200
-    assert test_controller.check_collision(test_spades_left) == False
+    """
+    Test that the collision is not detected when it should not be
+    from left hand side.
+    """
+    test_spades_left._x_position = 200 # pylint: disable=protected-access
+    assert test_controller.check_collision(test_spades_left) is False
 
 
 # test press any arrow key function
-# check that a key press is detected
 def test_press_any_arrow_key_with_input():
-    assert test_controller.press_any_arrow_key(right_arrow) == True
+    """
+    Check that a key press is detected.
+    """
+    assert test_controller.press_any_arrow_key(right_arrow) is True
 
-# check that when a key other than arrow key is pressed, false is returned
 def test_press_any_arrow_key_no_input():
-    assert test_controller.press_any_arrow_key(space_bar) == False
+    """
+    Check that when a key other than arrow key is pressed, false is returned.
+    """
+    assert test_controller.press_any_arrow_key(space_bar) is False
