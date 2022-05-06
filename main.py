@@ -94,7 +94,7 @@ if __name__ == '__main__':
         # Else, update the display and continue this iretation of the game
         else:
             if best_score == randint(12,100):
-                current_obstacle.x_velocity["left"] -= randint(1,17)/10
+                current_obstacle.X_VELOCITY["left"] -= randint(1,17)/10
             CUR_WORLD.display()
             CUR_WORLD.display_sprites(current_obstacle)
             pygame.display.update()
