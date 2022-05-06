@@ -22,8 +22,8 @@ _A game in which the rules are unknown._
 ### Download links for your project
 (things)
 
-### A link to your project’s GitHub page
-[Mao Run](https://github.com/olincollege/mao-run)
+### A link to [your project’s GitHub page](https://github.com/olincollege/mao-run).
+
 ## About Us
 
 ---
