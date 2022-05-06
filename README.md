@@ -1,4 +1,4 @@
-# Mao Run
+# mao-run
 _A game in which the rules are unknown._
 
 ## The big idea or goal of the project
