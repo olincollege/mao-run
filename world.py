@@ -54,7 +54,7 @@ class world(ABC):
         self.font = pygame.font.Font(None, 32)
 
         # Initialize game icon
-        self.maorun_icon = pygame.image.load("Sprites/joker2.png")
+        self.maorun_icon = pygame.image.load("Sprites/game_icon.png")
         self.clock = pygame.time.Clock()
 
     @abstractmethod

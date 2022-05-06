@@ -23,7 +23,7 @@ class Character(pygame.sprite.Sprite):
         super().__init__()
         # Load player images
         self.joker_1 = pygame.image.load("Sprites/joker2.png")
-        self.joker_2 = pygame.image.load("Sprites/clubs.png")
+        self.joker_2 = pygame.image.load("Sprites/joker1.png")
         # Set up animation for player
         self.joker_moves = [self.joker_1, self.joker_2]
         self.joker_index = 0
