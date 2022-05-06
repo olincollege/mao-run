@@ -77,7 +77,8 @@ class MaoRun(world):
         # Initialize a screen
         self.screen = pygame.display.set_mode((800,400))
         # infoObject = pygame.display.Info()
-        # self.screen = pygame.display.set_mode((infoObject.current_w, infoObject.current_h))
+        # self.screen = pygame.display.set_mode((infoObject.current_w,
+        # infoObject.current_h))
         pygame.display.set_caption('Mao Run')
         pygame.display.set_icon(self.maorun_icon)
 
@@ -149,4 +150,14 @@ class MaoRun(world):
         Insert Docstring
         """
         self.screen.blit(self.background,(0,0))
+        _font = pygame.font.SysFont("chalkduster.ttf", 20, True)
+        _img = _font.render('Esc', True, "WHITE", "BLUE")
+        self.screen.blit(_img, (670,369))
+        _font = pygame.font.SysFont("chalkduster.ttf", 20)
+        _img = _font.render('Press', True, "BLUE")
+        self.screen.blit(_img, (630,370))
+        _img = _font.render('to End Game', True, "BLUE")
+        self.screen.blit(_img, (700,370))
+        # _rect = _img.get_rect()
+        # pygame.draw.rect(_img, "BLUE", _rect, 1)
         self.clock.tick(60)
