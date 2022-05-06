@@ -27,10 +27,7 @@ _A game in which the rules are unknown._
 - Teamwork, delegation
 
 ### A link to your project’s GitHub page
-- Pytesseract
-- Tkinter
-- Arduino configuration
-
+![Mao Run](https://github.com/olincollege/mao-run)
 ## About Us
 
 ---
