@@ -17,20 +17,13 @@ _A game in which the rules are unknown._
 ---
 
 ### Installation instructions
-- Grainy camera
-- Servos loop does not terminate (Arduino//servo error)
-- Interface error (Camera not showing//Tkinter)
+(things)
 
 ### Download links for your project
-- Early idea forming and realistic planning
-- Using a camera to read text
-- Teamwork, delegation
+(things)
 
 ### A link to your project’s GitHub page
-- Pytesseract
-- Tkinter
-- Arduino configuration
-
+[Mao Run](https://github.com/olincollege/mao-run)
 ## About Us
 
 ---
