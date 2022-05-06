@@ -1,20 +1,15 @@
-# Mao Run
+# mao-run
 _A game in which the rules are unknown._
 
 ## The big idea or goal of the project
-
----
 
 (Write things and stuff here)
 
 ## Unique features of your project
 
----
 (Put things in here)
 
 ## Try it yourself!
-
----
 
 ### Installation instructions
 (things)
@@ -26,13 +21,9 @@ _A game in which the rules are unknown._
 
 ## About Us
 
----
-
 (Things)
 
 ## References
-
----
 
 #### Dependencies
 * pygame

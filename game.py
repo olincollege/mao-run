@@ -1,28 +1,59 @@
+"""
+Create game functionality
+"""
 import pygame
 import sys
 from random import choice
 from obstacle import Obstacle
 
 class Game:
+    """
+    Functionality for the mao-run game.
 
+    Attributes:
+        POSSIBLE_OBSTACLES: a list of the possible obstacles for the game.
+        score: an integer representing the player's score.
+        _round_over_called: a boolean representing whether the round has ended.
+        _game_over_called: a boolean representing whether the game has ended.
+        _obstacle_actions: a dictionary with the keys as the string
+            representations of the obstacles and the values as the
+            expected key presses.
+    """
     POSSIBLE_OBSTACLES = ["spades", "diamonds", "hearts", "clubs"]
     score = 0
 
     def __init__(self, obstacle_actions):
+        """
+        Create an instance of Game.
+
+        Args:
+            obstacle_actions: a dictionary with the keys as the string
+                representations of the obstacles and the values as the
+                expected key presses.
+        """
         self._round_over_called = False
         self._game_over_called = False
         self._obstacle_actions = obstacle_actions
     
     @property
     def round_over_called(self):
+        """
+        Create a round_over_called property for Game.
+        """
         return self._round_over_called
 
     @property
     def game_over_called(self):
+        """
+        Create a game_over_called property for Game.
+        """
         return self._game_over_called
 
     @property
     def obstacle_actions(self):
+        """
+        Create an obstacle_actions property for Game.
+        """
         return self._obstacle_actions
     
     def round_over(self):
@@ -43,26 +74,11 @@ class Game:
         'X' button.
 
         Args:
-            event: 
+            event: a pygame event regarding user input.
         """
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-    
-    def press_any_arrow_key(self, event):
-        """
-        Check if the player is pressing one of the arrow keys.
-        Args:
-            event: 
-
-        Returns
-            A boolean statement representing whether the correct key is pressed.
-        """
-        if event.type == pygame.KEYDOWN and (event.key == pygame.K_UP 
-                or event.key == pygame.K_DOWN or event.key == pygame.K_LEFT or
-                event.key == pygame.K_RIGHT):
-            return True
-        return False
 
     def check_continue(self, control, obstacle):
         """
@@ -95,8 +111,6 @@ class Game:
             if event.type == pygame.KEYDOWN:
                 if pressed_correct_key:
                     self.score += 1
-                    # print(self.score)
-                    print(obstacle.sprite)
                     return Obstacle(choice(self.POSSIBLE_OBSTACLES), self.obstacle_actions)
                 else:
                     self.round_over()

@@ -3,7 +3,6 @@ Insert Docstring Here
 """
 import pygame
 from random import choice, randint
-from scipy import rand
 from world import MaoRun
 from game import Game
 from character import Character
@@ -17,10 +16,10 @@ if __name__ == '__main__':
     # Initialize constants
     ACTIONS = [pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT]
     OBSTACLE_ACTIONS = {
-            "spades": choice(ACTIONS),
-            "diamonds": choice(ACTIONS),
-            "hearts": choice(ACTIONS),
-            "clubs": choice(ACTIONS),
+        "spades": choice(ACTIONS),
+        "diamonds": choice(ACTIONS),
+        "hearts": choice(ACTIONS),
+        "clubs": choice(ACTIONS),
     }
 
     # Initialize player
@@ -58,7 +57,7 @@ if __name__ == '__main__':
             CUR_WORLD.display_instructions()
             # Press any arrow key to start game
             for event in pygame.event.get():
-                if game.press_any_arrow_key(event):
+                if control.press_any_arrow_key(event):
                     game_start = True
                 game.exit_window(event)
         # Display intro screen if no input/irregularity is received
@@ -95,7 +94,7 @@ if __name__ == '__main__':
         # Else, update the display and continue this iretation of the game
         else:
             if best_score == randint(12,100):
-                current_obstacle.x_velocity["left"] -= randint(1,17)/10
+                current_obstacle.X_VELOCITY["left"] -= randint(1,17)/10
             CUR_WORLD.display()
             CUR_WORLD.display_sprites(current_obstacle)
             pygame.display.update()
