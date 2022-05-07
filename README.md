@@ -14,7 +14,7 @@ _Technically, you shouldn’t view this section to enjoy the full game experienc
 [![Alternate Text]({image-url})]({video-url} "Link Title") - insert video
 ![Alternate Text](image-url) - insert image
 - - - 
-### Features
+### FEATURES
 #### BEAUTIFUL PIXEL INTERFACE
 * Simulates a nostalgic atmosphere that brings you back to the age of arcade games. Mao Run (2022) aims to achieve the simple visuals presented in games like Space Invaders (1978) and Pac-Man (1980), which provide a compelling game environment that draws you in without the addition of convoluted computer graphics.
 
