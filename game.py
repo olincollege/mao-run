@@ -69,7 +69,8 @@ class Game:
         """
         self._game_over_called = True
 
-    def exit_window(self, event):
+    @staticmethod
+    def exit_window(event):
         """
         Allow the user to turn off the game windown when clicking the
         'X' button.

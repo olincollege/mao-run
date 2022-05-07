@@ -34,9 +34,14 @@ class Controller(ABC):
         return self._game
 
     @abstractmethod
-    def interpret_input(self):
+    def interpret_input(self, event, correct_key):
         """
         Create an abstract method to interpret input.
+
+        Args:
+            event: pygame event referring to user input.
+            correct_key: Pygame constant referring to the key that
+                needed to be pressed for the given obstacle.
         """
         pass
 
@@ -62,9 +67,10 @@ class ObstacleController(Controller):
             if event.key != correct_key:
                 return False
             return True
-        return
+        return None
 
-    def check_collision(self, current_obstacle):
+    @staticmethod
+    def check_collision(current_obstacle):
         """
         Check whether the obstacle has collided with the character.
 
@@ -77,7 +83,8 @@ class ObstacleController(Controller):
         """
         return current_obstacle.has_collided()
 
-    def press_any_arrow_key(self, event):
+    @staticmethod
+    def press_any_arrow_key(event):
         """
         Check if the player is pressing one of the arrow keys.
         Args:
