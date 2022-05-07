@@ -22,8 +22,8 @@ _Technically, you shouldn’t view this section to enjoy the full game experienc
 * Keeping our game captivating at its core is the random key assignment function. Written using Python’s [random](https://docs.python.org/3/library/random.html) library. The function would assign each of the 4 different user inputs: `pygame.K_UP` `pygame.K_DOWN` `pygame.K_LEFT` `pygame.K_RIGHT` to each obstacle for every new instance of the game. To proceed with the game, the player is expected to fail the first few times to figure out which key corresponds to which obstacle,
 
 #### RANDOM SPEED CHANGES
-* **New Feature** When players start to understand the game’s implied logic and assignments, some complain that the game begins to feel slow and rather _boring_. As a team, we value our consumers’ interests and concerns. Case in point, in response to the aforementioned feedback, we promptly deliver a new feature: *RANDOM SPEED CHANGES*.
-As you, the player, get to a certain level of proficiency in maneuvering the game, *RANDOM SPEED CHANGES* will be called into action, keeping you on your toes by randomly speeding up the impending obstacles.
+* **NEW FEATURE** When players start to understand the game’s implied logic and assignments, some complain that the game begins to feel slow and rather _boring_. As a team, we value our consumers’ interests and concerns. Case in point, in response to the aforementioned feedback, we promptly deliver a new feature: **RANDOM SPEED CHANGES**.
+As you, the player, get to a certain level of proficiency in maneuvering the game, **RANDOM SPEED CHANGES** will be called into action, keeping you on your toes by randomly speeding up the impending obstacles.
 
 ## Try it yourself!
 
@@ -46,11 +46,12 @@ This project relies upon the following dependency:
 * Since the rules of the game are purposefully unknown, simply press an arrow key and hope for the best.
 * If you want to exit the game, press the `esc` key.
 
-### Download links for your project
-### A link to your project’s GitHub page
-### About Us
-#### Lili Baker *Back End Software Developer*
+## About Us
+#### Lili Baker
+*Back End Software Developer*
 
-#### Cherry Pham *Back End Software Developer*
+#### Cherry Pham
+*Back End Software Developer*
 
-#### Vaani Bhatnagar *UI/UX Designer*
+#### Vaani Bhatnagar
+*UI/UX Designer*
