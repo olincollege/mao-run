@@ -103,6 +103,10 @@ class Obstacle:
     def has_collided(self):
         """
         Determine if the obstacle has collided with the character.
+
+        Returns:
+            A boolean indicatign whether the obstacle has collided
+            with the character.
         """
         # if the obstacle begins of the left, it's position must not exceed
         # the collision_position
