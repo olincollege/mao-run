@@ -19,9 +19,8 @@ obstacle_actions = {
 test_spades_right = Obstacle("spades", obstacle_actions, "right")
 test_spades_left = Obstacle("spades", obstacle_actions, "left")
 
+
 # update position testing
-
-
 def test_update_position_left():
     """
     Test that x_position updated correctly when obstacle
@@ -39,9 +38,8 @@ def test_update_position_right():
     test_spades_right.update_position()
     assert test_spades_right.x_position == 796
 
+
 # has collided testing
-
-
 def test_has_collided_left():
     """
     Test that collision detected when coming from left
