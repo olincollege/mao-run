@@ -1,4 +1,3 @@
-![Alternate Text](https://drive.google.com/file/d/1v4HL2ObjUczZEvnLX_DrUUk8cl99qgPh/view?usp=sharing)
 # Our game’s vision
 
 Mao Run is a 2D platformer game with only 1 rule: _We don’t talk about the rules._ The player has to figure out what to do with whatever visual cues provided to them on screen. Our goal is to be as infuriating as possible while keeping a certain level of enjoyment and dopamine for players to fixate on continuing.
