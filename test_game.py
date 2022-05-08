@@ -9,10 +9,7 @@ from game import Game
 
 pygame.init()
 
-pygame.init()
-
 # define variables needed to create test instances
-actions = [pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT]
 possible_obstacles = ["spades", "diamonds", "hearts", "clubs"]
 obstacle_actions = {
     "spades": pygame.K_UP,
