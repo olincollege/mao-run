@@ -1,10 +1,11 @@
 """
 Create game functionality
 """
-import pygame
 import sys
 from random import choice
+import pygame
 from obstacle import Obstacle
+
 
 class Game:
     """
@@ -34,7 +35,7 @@ class Game:
         self._round_over_called = False
         self._game_over_called = False
         self._obstacle_actions = obstacle_actions
-    
+
     @property
     def round_over_called(self):
         """
@@ -55,20 +56,21 @@ class Game:
         Create an obstacle_actions property for Game.
         """
         return self._obstacle_actions
-    
+
     def round_over(self):
         """"
         Demonstrate that the round is over.
         """
         self._round_over_called = True
-    
+
     def game_over(self):
         """"
         Demonstrate that the game is over.
         """
         self._game_over_called = True
 
-    def exit_window(self, event):
+    @staticmethod
+    def exit_window(event):
         """
         Allow the user to turn off the game windown when clicking the
         'X' button.
@@ -91,7 +93,7 @@ class Game:
             control: An ObstacleController instance for the current game.
             obstacle: An obstacle instance that is the current obstacle
                 on the screen.
-        
+
         Returns:
             An obstacle instance that is the same as the argument if the game
             is not over and the key is pressed, or is a new random obstacle if
@@ -104,20 +106,22 @@ class Game:
                 self.game_over()
             self.exit_window(event)
             # determine whether the user pressed the correct key
-            pressed_correct_key = control.interpret_input(event, obstacle.action)
+            pressed_correct_key = control.interpret_input(
+                event, obstacle.action)
 
             # if a key is pressed and the key is the correct key, return a new
             # obstacle instance
             if event.type == pygame.KEYDOWN:
                 if pressed_correct_key:
                     self.score += 1
-                    return Obstacle(choice(self.POSSIBLE_OBSTACLES), self.obstacle_actions)
-                else:
-                    self.round_over()
-        
+                    return Obstacle(choice(self.POSSIBLE_OBSTACLES),
+                                    self.obstacle_actions)
+                self.round_over()
+
         # If the obstacle collides with the player, end the game
         if control.check_collision(obstacle):
             self.round_over()
-        
-        # Return the obstacle instance entered as an argument if no keys were pressed
+
+        # Return the obstacle instance entered as an argument
+        # if no keys were pressed
         return obstacle

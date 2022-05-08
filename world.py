@@ -5,10 +5,12 @@ View file. Deals with all rendering and displaying tasks.
 from abc import ABC, abstractmethod
 import pygame
 
+
 class world(ABC):
     """
     Insert Docstring
     """
+
     def __init__(self, player):
         """
         Insert Docstring
@@ -36,32 +38,34 @@ class world(ABC):
 
         # Initialize sprites
         self.hearts = pygame.image.load("Sprites/hearts.png")
-        self.heart_rect = self.hearts.get_rect(midbottom = (400,300))
+        self.heart_rect = self.hearts.get_rect(midbottom=(400, 300))
 
         self.spades = pygame.image.load("Sprites/spades.png")
-        self.spades_rect = self.spades.get_rect(midbottom = (300,300))
+        self.spades_rect = self.spades.get_rect(midbottom=(300, 300))
 
         self.clubs = pygame.image.load("Sprites/clubs.png")
-        self.clubs_rect = self.clubs.get_rect(midbottom = (300,300))
+        self.clubs_rect = self.clubs.get_rect(midbottom=(300, 300))
 
         self.diamonds = pygame.image.load("Sprites/diamonds.png")
-        self.diamonds_rect = self.diamonds.get_rect(midbottom = (300,300))
+        self.diamonds_rect = self.diamonds.get_rect(midbottom=(300, 300))
 
         # Initialize game icon
         self.maorun_icon = pygame.image.load("Sprites/game_icon.png")
         self.clock = pygame.time.Clock()
 
     @abstractmethod
-    def display():
+    def display(self):
         """
         An abstract method that does nothing.
         """
         pass
 
+
 class MaoRun(world):
     """
     Insert Docstring
     """
+
     def __init__(self, character):
         """
         Insert Docstring
@@ -80,7 +84,7 @@ class MaoRun(world):
         pygame.display.set_caption('Mao Run')
         pygame.display.set_icon(self.maorun_icon)
 
-    def display_intro (self):
+    def display_intro(self):
         """
         Insert Docstring
         """
@@ -128,17 +132,17 @@ class MaoRun(world):
         Insert Docstring
         """
         if obstacle.sprite == "spades":
-            self.screen.blit(self.spades, (obstacle.x_position, \
-                obstacle.y_position))
+            self.screen.blit(self.spades, (obstacle.x_position,
+                                           obstacle.y_position))
         elif obstacle.sprite == "diamonds":
-            self.screen.blit(self.diamonds, (obstacle.x_position, \
-                obstacle.y_position))
+            self.screen.blit(self.diamonds, (obstacle.x_position,
+                                             obstacle.y_position))
         elif obstacle.sprite == "clubs":
-            self.screen.blit(self.clubs, (obstacle.x_position, \
-                obstacle.y_position))
+            self.screen.blit(self.clubs, (obstacle.x_position,
+                                          obstacle.y_position))
         elif obstacle.sprite == "hearts":
-            self.screen.blit(self.hearts, (obstacle.x_position, \
-                obstacle.y_position))
+            self.screen.blit(self.hearts, (obstacle.x_position,
+                                           obstacle.y_position))
         self.player.draw(self.screen)
         self.player.update()
         self.clock.tick(60)
@@ -147,5 +151,15 @@ class MaoRun(world):
         """
         Insert Docstring
         """
-        self.screen.blit(self.background,(0,0))
+        self.screen.blit(self.background, (0, 0))
+        _font = pygame.font.SysFont("chalkduster.ttf", 20, True)
+        _img = _font.render('Esc', True, "WHITE", "BLUE")
+        self.screen.blit(_img, (670, 369))
+        _font = pygame.font.SysFont("chalkduster.ttf", 20)
+        _img = _font.render('Press', True, "BLUE")
+        self.screen.blit(_img, (630, 370))
+        _img = _font.render('to End Game', True, "BLUE")
+        self.screen.blit(_img, (700, 370))
+        # _rect = _img.get_rect()
+        # pygame.draw.rect(_img, "BLUE", _rect, 1)
         self.clock.tick(60)

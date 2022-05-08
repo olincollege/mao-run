@@ -3,6 +3,7 @@ Implement obstacles.
 """
 from random import choice
 
+
 class Obstacle:
     """
     Create an obstacle.
@@ -25,7 +26,8 @@ class Obstacle:
         _y_position: An integer representing the y position for the obstacle.
         _collision_position: An integere representing the x-coordinate at which
             the obstacle collides with the character.
-        _action: A pygame event representing the desired key press for the obstacle.
+        _action: A pygame event representing the desired key press for the
+            obstacle.
     """
     X_VELOCITY = {"left": -4, "right": 4}
     STARTING_LOCATION = {"left": 0, "right": 800}
@@ -33,7 +35,7 @@ class Obstacle:
 
     def __init__(self, sprite, actions, start_position=None):
         """
-        
+
         Args:
             sprite: a string containing the name of the sprite.
             actions: a dictionary with the keys as the names of the sprites
@@ -56,7 +58,7 @@ class Obstacle:
         Create a sprite property for Obstacle.
         """
         return self._sprite
-    
+
     @property
     def start_position(self):
         """
@@ -77,7 +79,7 @@ class Obstacle:
         Create a y-position property for Obstacle.
         """
         return self._y_position
-    
+
     @property
     def collision_position(self):
         """
@@ -97,10 +99,14 @@ class Obstacle:
         Update the x-position of the obstacle using appropriate velocity.
         """
         self._x_position -= self.X_VELOCITY[self.start_position]
-    
+
     def has_collided(self):
         """
         Determine if the obstacle has collided with the character.
+
+        Returns:
+            A boolean indicatign whether the obstacle has collided
+            with the character.
         """
         # if the obstacle begins of the left, it's position must not exceed
         # the collision_position
