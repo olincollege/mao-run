@@ -1,4 +1,5 @@
-
+# mao-run
+_A game in which the rules are unknown_
 
 ## Our game’s vision
 
