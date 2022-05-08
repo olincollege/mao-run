@@ -8,12 +8,6 @@ Mao Run is a 2D platformer game with only 1 rule: _We don’t talk about the rul
 In a way, despite its non-educative appearance and inherent silliness, Mao Run embodies the ultimate life lesson: _“You live and you learn.”_ Sometimes, what you need to do is to “just 
 go for it”. As long as you have a chance to correct yourself, the possibility for trial and error (and eventual improvement) is endless. We hope you have good luck in diving headfirst into whatever the task that made you hesitant is. Meanwhile, ***enjoy our game!***
 
-## Preview
-_Technically, you shouldn’t view this section to enjoy the full game experience._
-- - - 
-[![Alternate Text]({image-url})]({video-url} "Link Title") - insert video
-![Alternate Text](image-url) - insert image
-- - - 
 ### FEATURES
 #### BEAUTIFUL PIXEL INTERFACE
 * Simulates a nostalgic atmosphere that brings you back to the age of arcade games. Mao Run (2022) aims to achieve the simple visuals presented in games like Space Invaders (1978) and Pac-Man (1980), which provide a compelling game environment that draws you in without the addition of convoluted computer graphics.
