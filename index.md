@@ -9,7 +9,9 @@ go for it”. As long as you have a chance to correct yourself, the possibility 
 _Technically, you shouldn’t view this section to enjoy the full game experience._
 - - - 
 [![Alternate Text]({image-url})]({video-url} "Link Title") - insert video
-![Alternate Text](image-url) - insert image
+### Image of Mao Run Game
+<iframe src="https://drive.google.com/file/d/1MWAT3tA7UySODnrS-GA2UlgXTcnCrbNh/preview" width="640" height="480" allow="autoplay" alt="Image of Mao Run Game"></iframe>
+
 - - - 
 ## FEATURES
 ### BEAUTIFUL PIXEL INTERFACE
@@ -25,8 +27,8 @@ As you, the player, get to a certain level of proficiency in maneuvering the gam
 # Try it yourself!
 
 ## Installation instructions for [Mao Run](https://github.com/olincollege/mao-run)
-1. Clone the repository.
-    `git clone https://github.com/olincollege/mao-run.git`<br>
+1. Clone the repository.<br>
+    `git clone https://github.com/olincollege/mao-run.git`
 2. Navigate to the local repository using your terminal.<br>
     ex: `cd mao-run`
 3. Install the dependencies listed below if they are not already installed.
@@ -44,11 +46,14 @@ This project relies upon the following dependency:
 * If you want to exit the game, press the `esc` key.
 
 # About Us
-### Lili Baker
+### [Lili Baker](https://github.com/lilibaker)
 *Back End Software Developer*
 
-### Cherry Pham
+### [Cherry Pham](https://github.com/cherryyypham)
 *Back End Software Developer*
 
-### Vaani Bhatnagar
+### [Vaani Bhatnagar](https://github.com/vaanibhatnagar)
 *UI/UX Designer*
+
+# References
+Mao Run is inspired by the underlying concepts of the card game [Mao](https://www.wikihow.com/Play-Mao), in which all players except the gamemaster do not know the rules of the game. The particpants learn the unspoken rules whilst playing the game, which is similar to how Mao Run (2022) works.
