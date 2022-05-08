@@ -159,28 +159,36 @@ class MaoRun(world):
         """
         Insert Docstring
         """
+        # Inherits all attributes from character
         super().__init__(character)
 
-        # Initialize a screen
+        # Get player's screen information
         self.infoObject = pygame.display.Info()
+
+        # Initialize a screen based on the player's screen
         self.screen_width = self.infoObject.current_w/2
         self.screen_height = self.infoObject.current_h/2
         self.screen = pygame.display.set_mode((self.screen_width, self.screen_height))
 
+        # Reset the scale of different screens during the game
         self.intro = pygame.transform.scale(self.intro, (self.screen_height, self.screen_height))
         self.instructions = pygame.transform.scale(self.instructions, (self.screen_height, self.screen_height))
         self.background = pygame.transform.scale(self.background, (self.screen_width, self.screen_height))
         self.restart = pygame.transform.scale(self.restart, (self.screen_height, self.screen_height))
         self.game_over = pygame.transform.scale(self.game_over, (self.screen_height,self.screen_height))
 
+        # Reset the scale of Mao Run obstacles
         self.hearts = pygame.transform.scale(self.hearts, (self.screen_width/13, self.screen_height/7))
         self.spades = pygame.transform.scale(self.spades, (self.screen_width/13, self.screen_height/7))
         self.clubs = pygame.transform.scale(self.clubs, (self.screen_width/13, self.screen_height/7))
         self.diamonds = pygame.transform.scale(self.diamonds, (self.screen_width/13, self.screen_height/7))
 
+        pygame.display.set_caption('Mao Run')
+        pygame.display.set_icon(self.maorun_icon)
+
     def display_intro(self):
         """
-        Insert Docstring
+        Display introduction surface to screen.
         """
         self.screen.fill("black")
         self.screen.blit(self.intro,self.intro.get_rect(midtop = (self.screen_width/2,0)))
@@ -189,7 +197,7 @@ class MaoRun(world):
 
     def display_instructions(self):
         """
-        Insert Docstring
+        Display instructions surface to screen.
         """
         self.screen.fill("black")
         self.screen.blit(self.instructions,self.instructions.get_rect(midtop = (self.screen_width/2,0)))
@@ -198,7 +206,7 @@ class MaoRun(world):
 
     def display_restart(self):
         """
-        Insert Docstring
+        Display restart surface to screen.
         """
         self.screen.fill("black")
         self.screen.blit(self.restart,self.restart.get_rect(midtop = (self.screen_width/2,0)))
@@ -207,7 +215,7 @@ class MaoRun(world):
 
     def display_game_over(self):
         """
-        Insert Docstring
+        Display game over surface to screen.
         """
         self.screen.fill("#5C5755")
         self.screen.blit(self.game_over,self.game_over.get_rect(midtop = (self.screen_width/2,0)))
@@ -215,7 +223,10 @@ class MaoRun(world):
 
     def display_score(self, score):
         """
-        Insert Docstring
+        Display score surface to screen.
+
+        Args:
+            score (string): The highest score of the current implementation of Mao Run.
         """
         self.text = self.score_font.render(score, False, 'Green')
         self.screen.blit(self.text,self.text.get_rect(midtop = (self.screen_width *.53, self.screen_height* .73)))
@@ -223,8 +234,12 @@ class MaoRun(world):
     
     def display_sprites(self, obstacle):
         """
-        Insert Docstring
+        Display sprites surface to screen.
+
+        Args:
+            obstacle: An obstacle instance that is randomly generated.
         """
+        # Display different obstacle sprites
         if obstacle.sprite == "spades":
             self.screen.blit(self.spades, (obstacle.x_position,
                                            obstacle.y_position))
@@ -237,8 +252,11 @@ class MaoRun(world):
         elif obstacle.sprite == "hearts":
             self.screen.blit(self.hearts, (obstacle.x_position,
                                            obstacle.y_position))
+        # Display character
         self.player.draw(self.screen)
+        # Update character animation
         self.player.update()
+        # Control frame rate
         self.clock.tick(self.fps)
 
     def display_esc_instructions(self):
@@ -252,8 +270,6 @@ class MaoRun(world):
         """
         Insert Docstring
         """
-        pygame.display.set_caption('Mao Run')
-        pygame.display.set_icon(self.maorun_icon)
         self.screen.blit(self.background, (0, 0))
         self.display_esc_instructions()
         self.clock.tick(self.fps)
