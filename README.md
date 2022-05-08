@@ -18,7 +18,7 @@ _Technically, you shouldn’t view this section to enjoy the full game experienc
 #### BEAUTIFUL PIXEL INTERFACE
 * Simulates a nostalgic atmosphere that brings you back to the age of arcade games. Mao Run (2022) aims to achieve the simple visuals presented in games like Space Invaders (1978) and Pac-Man (1980), which provide a compelling game environment that draws you in without the addition of convoluted computer graphics.
 
-### RANDOM KEY ASSIGNMENT
+#### RANDOM KEY ASSIGNMENT
 * Keeping our game captivating at its core is the random key assignment function. Written using Python’s [random](https://docs.python.org/3/library/random.html) library. The function would assign each of the 4 different user inputs: `pygame.K_UP` `pygame.K_DOWN` `pygame.K_LEFT` `pygame.K_RIGHT` to each obstacle for every new instance of the game. To proceed with the game, the player is expected to fail the first few times to figure out which key corresponds to which obstacle,
 
 #### RANDOM SPEED CHANGES
