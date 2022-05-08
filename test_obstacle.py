@@ -20,7 +20,7 @@ obstacle_actions = {
 test_spades_right = Obstacle("spades", obstacle_actions, "right")
 test_spades_left = Obstacle("spades", obstacle_actions, "left")
 
-# define test cases for has collided
+# define test cases for has collided when there is a collision
 has_collided_test_cases = [
     # test collision detection from the left hand side at site of collision
     ([test_spades_left, test_spades_left.collision_position], True),
@@ -52,8 +52,6 @@ def test_update_position_right():
     assert test_spades_right.x_position == 796
 
 # has collided testing
-
-
 @pytest.mark.parametrize("obstacle_info,collided", has_collided_test_cases)
 def test_has_collided(obstacle_info, collided):
     """
