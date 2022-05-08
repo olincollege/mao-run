@@ -96,12 +96,16 @@ if __name__ == '__main__':
                 game.exit_window(event)
         # Else, update the display and continue this iretation of the game
         else:
+            print(best_score)
             if best_score == randint(12, 50):
-                current_obstacle.X_VELOCITY["left"] -= randint(1, 10)/10
-                current_obstacle.X_VELOCITY["right"] += randint(1, 10)/10
-            elif best_score == randint(50, 1000):
-                current_obstacle.X_VELOCITY["left"] -= randint(5, 20)/10
-                current_obstacle.X_VELOCITY["right"] += randint(5, 20)/10
+                current_obstacle.X_VELOCITY["left"] -= randint(1, 5)/10
+                current_obstacle.X_VELOCITY["right"] += randint(1, 5)/10
+            elif best_score == randint(50, 100):
+                current_obstacle.X_VELOCITY["left"] -= randint(3, 15)/10
+                current_obstacle.X_VELOCITY["right"] += randint(3, 15)/10
+            elif best_score >= 100:
+                current_obstacle.X_VELOCITY["left"] -= randint(1, 15)/10
+                current_obstacle.X_VELOCITY["right"] += randint(1, 15)/10
             CUR_WORLD.display()
             CUR_WORLD.display_sprites(current_obstacle)
             pygame.display.update()
