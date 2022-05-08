@@ -70,18 +70,20 @@ class MaoRun(world):
 
         # Initialize a screen
         self.infoObject = pygame.display.Info()
-        self.screen = pygame.display.set_mode((self.infoObject.current_w, self.infoObject.current_h))
+        self.screen_width = self.infoObject.current_w/2
+        self.screen_height = self.infoObject.current_h/2
+        self.screen = pygame.display.set_mode((self.screen_width, self.screen_height))
 
-        self.intro = pygame.transform.scale(self.intro, (self.infoObject.current_h, self.infoObject.current_h))
-        self.instructions = pygame.transform.scale(self.instructions, (self.infoObject.current_h, self.infoObject.current_h))
-        self.background = pygame.transform.scale(self.background, (self.infoObject.current_w, self.infoObject.current_h))
-        self.restart = pygame.transform.scale(self.restart, (self.infoObject.current_h, self.infoObject.current_h))
-        self.game_over = pygame.transform.scale(self.game_over, (self.infoObject.current_h,self.infoObject.current_h))
+        self.intro = pygame.transform.scale(self.intro, (self.screen_height, self.screen_height))
+        self.instructions = pygame.transform.scale(self.instructions, (self.screen_height, self.screen_height))
+        self.background = pygame.transform.scale(self.background, (self.screen_width, self.screen_height))
+        self.restart = pygame.transform.scale(self.restart, (self.screen_height, self.screen_height))
+        self.game_over = pygame.transform.scale(self.game_over, (self.screen_height,self.screen_height))
 
-        self.hearts = pygame.transform.scale(self.hearts, (pygame.display.Info().current_w/13, pygame.display.Info().current_h/7))
-        self.spades = pygame.transform.scale(self.spades, (pygame.display.Info().current_w/13, pygame.display.Info().current_h/7))
-        self.clubs = pygame.transform.scale(self.clubs, (pygame.display.Info().current_w/13, pygame.display.Info().current_h/7))
-        self.diamonds = pygame.transform.scale(self.diamonds, (pygame.display.Info().current_w/13, pygame.display.Info().current_h/7))
+        self.hearts = pygame.transform.scale(self.hearts, (self.screen_width/13, self.screen_height/7))
+        self.spades = pygame.transform.scale(self.spades, (self.screen_width/13, self.screen_height/7))
+        self.clubs = pygame.transform.scale(self.clubs, (self.screen_width/13, self.screen_height/7))
+        self.diamonds = pygame.transform.scale(self.diamonds, (self.screen_width/13, self.screen_height/7))
 
         pygame.display.set_caption('Mao Run')
         pygame.display.set_icon(self.maorun_icon)
@@ -91,7 +93,7 @@ class MaoRun(world):
         Insert Docstring
         """
         self.screen.fill("black")
-        self.screen.blit(self.intro,self.intro.get_rect(midtop = (self.infoObject.current_w/2,0)))
+        self.screen.blit(self.intro,self.intro.get_rect(midtop = (self.screen_width/2,0)))
         self.clock.tick(60)
         pygame.display.update()
 
@@ -100,7 +102,7 @@ class MaoRun(world):
         Insert Docstring
         """
         self.screen.fill("black")
-        self.screen.blit(self.instructions,self.instructions.get_rect(midtop = (self.infoObject.current_w/2,0)))
+        self.screen.blit(self.instructions,self.instructions.get_rect(midtop = (self.screen_width/2,0)))
         self.clock.tick(60)
         pygame.display.update()
 
@@ -109,7 +111,7 @@ class MaoRun(world):
         Insert Docstring
         """
         self.screen.fill("black")
-        self.screen.blit(self.restart,self.restart.get_rect(midtop = (self.infoObject.current_w/2,0)))
+        self.screen.blit(self.restart,self.restart.get_rect(midtop = (self.screen_width/2,0)))
         self.clock.tick(60)
         pygame.display.update()
 
@@ -118,7 +120,7 @@ class MaoRun(world):
         Insert Docstring
         """
         self.screen.fill("#5C5755")
-        self.screen.blit(self.game_over,self.game_over.get_rect(midtop = (self.infoObject.current_w/2,0)))
+        self.screen.blit(self.game_over,self.game_over.get_rect(midtop = (self.screen_width/2,0)))
         self.clock.tick(60)
 
     def display_score(self, score):
@@ -126,7 +128,7 @@ class MaoRun(world):
         Insert Docstring
         """
         self.text = self.font.render(score, False, 'Green')
-        self.screen.blit(self.text,self.text.get_rect(midtop = (self.infoObject.current_w *.53,self.infoObject.current_h* .73)))
+        self.screen.blit(self.text,self.text.get_rect(midtop = (self.screen_width *.53, self.screen_height* .73)))
         self.clock.tick(60)
     
     def display_sprites(self, obstacle):
