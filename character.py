@@ -9,6 +9,9 @@ class Character(pygame.sprite.Sprite):
     Create the character sprite for the game.
 
     Attributes:
+        infoObject:
+        screen_width:
+        screen_height:
         joker_1:
         joker_2:
         joker_moves:
@@ -22,9 +25,11 @@ class Character(pygame.sprite.Sprite):
         Create a new character
         """
         super().__init__()
+        # Fetch screen info
         self.infoObject = pygame.display.Info()
         self.screen_width = self.infoObject.current_w/2
         self.screen_height = self.infoObject.current_h/2
+        
         # Load player images
         self.joker_1 = pygame.image.load("Sprites/joker2.png")
         self.joker_1 = pygame.transform.scale(self.joker_1, (self.screen_width/5, self.screen_height/2.5))

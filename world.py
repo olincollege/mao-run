@@ -8,13 +8,43 @@ import pygame
 
 class world(ABC):
     """
-    Insert Docstring
+    An abstract-base class representing the view of Mao Run. Load all
+    the necessary images and texts that appear on the game screen.
+
+    Attributes:
+        maorun_icon (pygame surface): App icon
+        intro (pygame surface): Introduction screen 
+        clock: Controls the frames of the game
+        _fps (integer): Frames per second
+        instructions (pygame surface): Instructions screen
+        background (pygame surface): Background when the game is active
+        restart (pygame surface): Restart screen
+        game_over (pygame surface): Game Over screen
+        score_font (pygame font): Font settings for score display
+        esc_font (pygame font): First font settings for "Esc" message display
+        esc_font_bold (pygame font): Second font settings for "Esc" message display
+        press (pygame text): A text surface that says "Press"
+        esc (pygame text): A text surface that says "Esc"
+        to_end_game (pygame text): A text surface that says "to end game"
+        player (Character // pygame sprite): A Character instance
+        hearts (pygame surface): A heart obstacle
+        spades (pygame surface): A spade obstacle
+        clubs (pygame surface): A club obstacle
+        diamonds (pygame surface): A diamond obstacle
     """
 
     def __init__(self, player):
         """
-        Insert Docstring
+        Create a world instance.
+
+        Args:
+            player (Character): A Character instance representing the player
         """
+        # Initialize game icon
+        self.maorun_icon = pygame.image.load("Sprites/game_icon.png")
+        self.clock = pygame.time.Clock()
+        self._fps = 60
+
         # Initialize the intro screen
         self.intro = pygame.image.load("Sprites/introscreen.png")
 
@@ -31,35 +61,98 @@ class world(ABC):
         self.game_over = pygame.image.load("Sprites/gameover.png")
 
         # Set up font for score display
-        self.font = pygame.font.Font(None, 32)
+        self.score_font = pygame.font.Font(None, 32)
+
+        # Set up font for "Esc" instructions
+        self.esc_font = pygame.font.SysFont("chalkduster.ttf", 20)
+        self.esc_font_bold = pygame.font.SysFont("chalkduster.ttf", 20, True)
+
+        # Set up content for "Esc" instructions
+        self.press = self.esc_font.render('Press', True, "BLUE")
+        self.esc = self.esc_font_bold.render('Esc', True, "WHITE", "BLUE")
+        self.to_end_game = self.esc_font.render('to end game', True, "BLUE")
 
         # Initialize a player
         self.player = player
 
         # Initialize sprites
         self.hearts = pygame.image.load("Sprites/hearts.png")
-
         self.spades = pygame.image.load("Sprites/spades.png")
-
         self.clubs = pygame.image.load("Sprites/clubs.png")
-
         self.diamonds = pygame.image.load("Sprites/diamonds.png")
+    
+    @property
+    def fps(self):
+        """
+        Return the FPS of the game.
+        """
+        return self._fps
 
-        # Initialize game icon
-        self.maorun_icon = pygame.image.load("Sprites/game_icon.png")
-        self.clock = pygame.time.Clock()
+    @abstractmethod
+    def display_intro(self):
+        """
+        An abstract method that passes the display_intro function.
+        """
+        pass
+
+    @abstractmethod
+    def display_instructions(self):
+        """
+        An abstract method that passes the display_instructions
+        function.
+        """
+        pass
+
+    @abstractmethod
+    def display_restart(self):
+        """
+        An abstract method that passes the display_restart function.
+        """
+        pass
+
+    @abstractmethod
+    def display_game_over(self):
+        """
+        An abstract method that passes the display_game_over
+        function.
+        """
+        pass
+
+    @abstractmethod
+    def display_score(self, score):
+        """
+        An abstract method that passes the display_score
+        function.
+        """
+        pass
+
+    @abstractmethod
+    def display_sprites(self, obstacle):
+        """
+        An abstract method that passes the display_sprites
+        function.
+        """
+        pass
+
+    @abstractmethod
+    def display_esc_instructions(self):
+        """
+        An abstract method that passes the display_esc_instructions
+        function.
+        """
+        pass
 
     @abstractmethod
     def display(self):
         """
-        An abstract method that does nothing.
+        An abstract method that passes the display function.
         """
         pass
 
 
 class MaoRun(world):
     """
-    Insert Docstring
+    Display the Mao Run world.
     """
 
     def __init__(self, character):
@@ -85,16 +178,13 @@ class MaoRun(world):
         self.clubs = pygame.transform.scale(self.clubs, (self.screen_width/13, self.screen_height/7))
         self.diamonds = pygame.transform.scale(self.diamonds, (self.screen_width/13, self.screen_height/7))
 
-        pygame.display.set_caption('Mao Run')
-        pygame.display.set_icon(self.maorun_icon)
-
     def display_intro(self):
         """
         Insert Docstring
         """
         self.screen.fill("black")
         self.screen.blit(self.intro,self.intro.get_rect(midtop = (self.screen_width/2,0)))
-        self.clock.tick(60)
+        self.clock.tick(self.fps)
         pygame.display.update()
 
     def display_instructions(self):
@@ -127,9 +217,9 @@ class MaoRun(world):
         """
         Insert Docstring
         """
-        self.text = self.font.render(score, False, 'Green')
+        self.text = self.score_font.render(score, False, 'Green')
         self.screen.blit(self.text,self.text.get_rect(midtop = (self.screen_width *.53, self.screen_height* .73)))
-        self.clock.tick(60)
+        self.clock.tick(self.fps)
     
     def display_sprites(self, obstacle):
         """
@@ -149,21 +239,21 @@ class MaoRun(world):
                                            obstacle.y_position))
         self.player.draw(self.screen)
         self.player.update()
-        self.clock.tick(60)
+        self.clock.tick(self.fps)
+
+    def display_esc_instructions(self):
+        """
+        """
+        self.screen.blit(self.press, self.press.get_rect(bottomright = (self.screen_width-120,self.screen_height-5)))
+        self.screen.blit(self.esc, self.esc.get_rect(bottomright = (self.screen_width-90,self.screen_height-5)))
+        self.screen.blit(self.to_end_game, self.to_end_game.get_rect(bottomright = (self.screen_width-5,self.screen_height-5)))
 
     def display(self):
         """
         Insert Docstring
         """
+        pygame.display.set_caption('Mao Run')
+        pygame.display.set_icon(self.maorun_icon)
         self.screen.blit(self.background, (0, 0))
-        # _font = pygame.font.SysFont("chalkduster.ttf", 20, True)
-        # _img = _font.render('Esc', True, "WHITE", "BLUE")
-        # self.screen.blit(_img, (670, 369))
-        # _font = pygame.font.SysFont("chalkduster.ttf", 20)
-        # _img = _font.render('Press', True, "BLUE")
-        # self.screen.blit(_img, (630, 370))
-        # _img = _font.render('to End Game', True, "BLUE")
-        # self.screen.blit(_img, (700, 370))
-        # _rect = _img.get_rect()
-        # pygame.draw.rect(_img, "BLUE", _rect, 1)
-        self.clock.tick(60)
+        self.display_esc_instructions()
+        self.clock.tick(self.fps)
