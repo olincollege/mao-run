@@ -9,7 +9,8 @@ go for it”. As long as you have a chance to correct yourself, the possibility 
 _Technically, you shouldn’t view this section to enjoy the full game experience._
 - - - 
 [![Alternate Text]({image-url})]({video-url} "Link Title") - insert video
-![Image of Mao Run Game](https://drive.google.com/file/d/1MWAT3tA7UySODnrS-GA2UlgXTcnCrbNh/view?usp=sharing) - Image of Mao Run
+![Image of Mao Run Game](https://drive.google.com/uc?export=view&id=<1MWAT3tA7UySODnrS-GA2UlgXTcnCrbNh>) - Image of Mao Run
+
 <iframe src="https://drive.google.com/file/d/1MWAT3tA7UySODnrS-GA2UlgXTcnCrbNh/preview" width="640" height="480" allow="autoplay"></iframe>
 - - - 
 ## FEATURES
