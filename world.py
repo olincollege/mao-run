@@ -38,16 +38,12 @@ class world(ABC):
 
         # Initialize sprites
         self.hearts = pygame.image.load("Sprites/hearts.png")
-        self.heart_rect = self.hearts.get_rect(midbottom=(400, 300))
 
         self.spades = pygame.image.load("Sprites/spades.png")
-        self.spades_rect = self.spades.get_rect(midbottom=(300, 300))
 
         self.clubs = pygame.image.load("Sprites/clubs.png")
-        self.clubs_rect = self.clubs.get_rect(midbottom=(300, 300))
 
         self.diamonds = pygame.image.load("Sprites/diamonds.png")
-        self.diamonds_rect = self.diamonds.get_rect(midbottom=(300, 300))
 
         # Initialize game icon
         self.maorun_icon = pygame.image.load("Sprites/game_icon.png")
@@ -75,11 +71,17 @@ class MaoRun(world):
         # Initialize a screen
         self.infoObject = pygame.display.Info()
         self.screen = pygame.display.set_mode((self.infoObject.current_w, self.infoObject.current_h))
+
         self.intro = pygame.transform.scale(self.intro, (self.infoObject.current_h, self.infoObject.current_h))
         self.instructions = pygame.transform.scale(self.instructions, (self.infoObject.current_h, self.infoObject.current_h))
         self.background = pygame.transform.scale(self.background, (self.infoObject.current_w, self.infoObject.current_h))
         self.restart = pygame.transform.scale(self.restart, (self.infoObject.current_h, self.infoObject.current_h))
         self.game_over = pygame.transform.scale(self.game_over, (self.infoObject.current_h,self.infoObject.current_h))
+
+        self.hearts = pygame.transform.scale(self.hearts, (pygame.display.Info().current_w/13, pygame.display.Info().current_h/7))
+        self.spades = pygame.transform.scale(self.spades, (pygame.display.Info().current_w/13, pygame.display.Info().current_h/7))
+        self.clubs = pygame.transform.scale(self.clubs, (pygame.display.Info().current_w/13, pygame.display.Info().current_h/7))
+        self.diamonds = pygame.transform.scale(self.diamonds, (pygame.display.Info().current_w/13, pygame.display.Info().current_h/7))
 
         pygame.display.set_caption('Mao Run')
         pygame.display.set_icon(self.maorun_icon)
@@ -124,7 +126,7 @@ class MaoRun(world):
         Insert Docstring
         """
         self.text = self.font.render(score, False, 'Green')
-        self.screen.blit(self.text,self.text.get_rect(midtop = (self.infoObject.current_w/11*6,self.infoObject.current_h/8*6)))
+        self.screen.blit(self.text,self.text.get_rect(midtop = (self.infoObject.current_w *.53,self.infoObject.current_h* .73)))
         self.clock.tick(60)
     
     def display_sprites(self, obstacle):
@@ -152,14 +154,14 @@ class MaoRun(world):
         Insert Docstring
         """
         self.screen.blit(self.background, (0, 0))
-        _font = pygame.font.SysFont("chalkduster.ttf", 20, True)
-        _img = _font.render('Esc', True, "WHITE", "BLUE")
-        self.screen.blit(_img, (670, 369))
-        _font = pygame.font.SysFont("chalkduster.ttf", 20)
-        _img = _font.render('Press', True, "BLUE")
-        self.screen.blit(_img, (630, 370))
-        _img = _font.render('to End Game', True, "BLUE")
-        self.screen.blit(_img, (700, 370))
+        # _font = pygame.font.SysFont("chalkduster.ttf", 20, True)
+        # _img = _font.render('Esc', True, "WHITE", "BLUE")
+        # self.screen.blit(_img, (670, 369))
+        # _font = pygame.font.SysFont("chalkduster.ttf", 20)
+        # _img = _font.render('Press', True, "BLUE")
+        # self.screen.blit(_img, (630, 370))
+        # _img = _font.render('to End Game', True, "BLUE")
+        # self.screen.blit(_img, (700, 370))
         # _rect = _img.get_rect()
         # pygame.draw.rect(_img, "BLUE", _rect, 1)
         self.clock.tick(60)

@@ -33,7 +33,7 @@ class Character(pygame.sprite.Sprite):
         self.joker_index = 0
 
         self.image = self.joker_moves[int(self.joker_index)]
-        self.rect = self.image.get_rect(midbottom = (pygame.display.Info().current_w/2,pygame.display.Info().current_h/11*8))
+        self.rect = self.image.get_rect(midbottom = (pygame.display.Info().current_w/2,pygame.display.Info().current_h * .73))
 
     def joker_animation(self):
         """

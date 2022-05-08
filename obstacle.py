@@ -2,7 +2,7 @@
 Implement obstacles.
 """
 from random import choice
-
+import tkinter
 
 class Obstacle:
     """
@@ -29,9 +29,12 @@ class Obstacle:
         _action: A pygame event representing the desired key press for the
             obstacle.
     """
-    X_VELOCITY = {"left": -4, "right": 4}
-    STARTING_LOCATION = {"left": 0, "right": 800}
-    COLLISION_LOCATION = {"left": 300, "right": 425}
+    _root = tkinter.Tk()
+    screen_width = _root.winfo_screenwidth()
+    screen_height = _root.winfo_screenheight()
+    X_VELOCITY = {"left": -10, "right": 10}
+    STARTING_LOCATION = {"left": 0, "right": screen_width}
+    COLLISION_LOCATION = {"left": screen_width * 0.4, "right": screen_width * 0.6}
 
     def __init__(self, sprite, actions, start_position=None):
         """
@@ -48,7 +51,7 @@ class Obstacle:
             start_position = choice(["left", "right"])
         self._start_position = start_position
         self._x_position = self.STARTING_LOCATION[self.start_position]
-        self._y_position = 200
+        self._y_position = self.screen_height * .55
         self._collision_position = self.COLLISION_LOCATION[self.start_position]
         self._action = actions[sprite]
 
