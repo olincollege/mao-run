@@ -44,11 +44,11 @@ This project relies upon the following dependency:
 * If you want to exit the game, press the `esc` key.
 
 # About Us
-### Lili Baker
+### [Lili Baker](https://github.com/lilibaker)
 *Back End Software Developer*
 
-### Cherry Pham
+### [Cherry Pham](https://github.com/cherryyypham)
 *Back End Software Developer*
 
-### Vaani Bhatnagar
+### [Vaani Bhatnagar](https://github.com/vaanibhatnagar)
 *UI/UX Designer*
