@@ -3,7 +3,6 @@ View file. Deals with all rendering and displaying tasks.
 """
 
 from abc import ABC, abstractmethod
-from numpy import character
 import pygame
 
 class world(ABC):
@@ -16,15 +15,21 @@ class world(ABC):
         """
         # Initialize the intro screen
         self.intro = pygame.image.load("Sprites/introscreen.png")
-        self.intro = pygame.transform.scale(self.intro, (400,400))
+
+        # Initialize the instructions screen
+        self.instructions = pygame.image.load("Sprites/instructionsscreen.png")
 
         # Initialize the background screen
         self.background = pygame.image.load("Sprites/backgroundscreen.png")
-        self.background = pygame.transform.scale(self.background, (800,400))
 
         # Initialize the restart screen
         self.restart = pygame.image.load("Sprites/restartscreen.png")
-        self.restart = pygame.transform.scale(self.restart, (400,400))
+
+        # Initialize the game over screen
+        self.game_over = pygame.image.load("Sprites/gameover.png")
+
+        # Set up font for score display
+        self.font = pygame.font.Font(None, 32)
 
         # Initialize a player
         self.player = player
@@ -41,17 +46,6 @@ class world(ABC):
 
         self.diamonds = pygame.image.load("Sprites/diamonds.png")
         self.diamonds_rect = self.diamonds.get_rect(midbottom = (300,300))
-
-        # Initialize the game over screen
-        self.game_over = pygame.image.load("Sprites/gameover.png")
-        self.game_over = pygame.transform.scale(self.game_over, (500,400))
-
-        # Initialize the instructions screen
-        self.instructions = pygame.image.load("Sprites/instructionsscreen.png")
-        self.instructions = pygame.transform.scale(self.instructions, (400,400))
-
-        # Set up font for score display
-        self.font = pygame.font.Font(None, 32)
 
         # Initialize game icon
         self.maorun_icon = pygame.image.load("Sprites/game_icon.png")
@@ -75,9 +69,14 @@ class MaoRun(world):
         super().__init__(character)
 
         # Initialize a screen
-        self.screen = pygame.display.set_mode((800,400))
-        # infoObject = pygame.display.Info()
-        # self.screen = pygame.display.set_mode((infoObject.current_w, infoObject.current_h))
+        self.infoObject = pygame.display.Info()
+        self.screen = pygame.display.set_mode((self.infoObject.current_w, self.infoObject.current_h))
+        self.intro = pygame.transform.scale(self.intro, (self.infoObject.current_h, self.infoObject.current_h))
+        self.instructions = pygame.transform.scale(self.instructions, (self.infoObject.current_h, self.infoObject.current_h))
+        self.background = pygame.transform.scale(self.background, (self.infoObject.current_w, self.infoObject.current_h))
+        self.restart = pygame.transform.scale(self.restart, (self.infoObject.current_h, self.infoObject.current_h))
+        self.game_over = pygame.transform.scale(self.game_over, (self.infoObject.current_h,self.infoObject.current_h))
+
         pygame.display.set_caption('Mao Run')
         pygame.display.set_icon(self.maorun_icon)
 
@@ -86,7 +85,7 @@ class MaoRun(world):
         Insert Docstring
         """
         self.screen.fill("black")
-        self.screen.blit(self.intro,(200,0))
+        self.screen.blit(self.intro,self.intro.get_rect(midtop = (self.infoObject.current_w/2,0)))
         self.clock.tick(60)
         pygame.display.update()
 
@@ -95,34 +94,34 @@ class MaoRun(world):
         Insert Docstring
         """
         self.screen.fill("black")
-        self.screen.blit(self.instructions,(200,0))
+        self.screen.blit(self.instructions,self.instructions.get_rect(midtop = (self.infoObject.current_w/2,0)))
         self.clock.tick(60)
         pygame.display.update()
 
-    def display_score(self, score):
+    def display_restart(self):
         """
         Insert Docstring
         """
-        self.text = self.font.render(score, False, 'Green')
-        self.screen.blit(self.text,(365,300))
+        self.screen.fill("black")
+        self.screen.blit(self.restart,self.restart.get_rect(midtop = (self.infoObject.current_w/2,0)))
         self.clock.tick(60)
+        pygame.display.update()
 
     def display_game_over(self):
         """
         Insert Docstring
         """
         self.screen.fill("#5C5755")
-        self.screen.blit(self.game_over,(150,0))
+        self.screen.blit(self.game_over,self.game_over.get_rect(midtop = (self.infoObject.current_w/2,0)))
         self.clock.tick(60)
-    
-    def display_restart(self):
+
+    def display_score(self, score):
         """
         Insert Docstring
         """
-        self.screen.fill("black")
-        self.screen.blit(self.restart, (200,0))
+        self.text = self.font.render(score, False, 'Green')
+        self.screen.blit(self.text,self.text.get_rect(midtop = (self.infoObject.current_w/11*6,self.infoObject.current_h/8*6)))
         self.clock.tick(60)
-        pygame.display.update()
     
     def display_sprites(self, obstacle):
         """
