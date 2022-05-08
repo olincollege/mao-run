@@ -27,8 +27,8 @@ As you, the player, get to a certain level of proficiency in maneuvering the gam
 # Try it yourself!
 
 ## Installation instructions for [Mao Run](https://github.com/olincollege/mao-run)
-1. Clone the repository.
-    `git clone https://github.com/olincollege/mao-run.git`<br>
+1. Clone the repository.<br>
+    `git clone https://github.com/olincollege/mao-run.git`
 2. Navigate to the local repository using your terminal.<br>
     ex: `cd mao-run`
 3. Install the dependencies listed below if they are not already installed.
