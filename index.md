@@ -9,7 +9,7 @@ go for it”. As long as you have a chance to correct yourself, the possibility 
 _Technically, you shouldn’t view this section to enjoy the full game experience._
 - - - 
 [![Alternate Text]({image-url})]({video-url} "Link Title") - insert video
-![Alternate Text](image-url) - insert image
+![Image of Mao Run Game](https://drive.google.com/file/d/1MWAT3tA7UySODnrS-GA2UlgXTcnCrbNh/view?usp=sharing) - Image of Mao Run
 - - - 
 ## FEATURES
 ### BEAUTIFUL PIXEL INTERFACE
