@@ -55,5 +55,5 @@ This project relies upon the following dependency:
 ### [Vaani Bhatnagar](https://github.com/vaanibhatnagar)
 *UI/UX Designer*
 
-# Refernces
-Mao Run is inspired by the underlying concepts of the card game ["Mao"](https://www.wikihow.com/Play-Mao), in which all players except the game master do not know the rules of the game. The particpants learn the unspoken rules whilst playing the game, which is similar to how Mao Run (2022) works.
+# References
+Mao Run is inspired by the underlying concepts of the card game [Mao](https://www.wikihow.com/Play-Mao), in which all players except the gamemaster do not know the rules of the game. The particpants learn the unspoken rules whilst playing the game, which is similar to how Mao Run (2022) works.
