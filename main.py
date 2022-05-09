@@ -100,11 +100,11 @@ if __name__ == '__main__':
                 current_obstacle.X_VELOCITY["left"] -= randint(1, 5)/10
                 current_obstacle.X_VELOCITY["right"] += randint(1, 5)/10
             elif best_score == randint(50, 100):
-                current_obstacle.X_VELOCITY["left"] -= randint(3, 15)/10
-                current_obstacle.X_VELOCITY["right"] += randint(3, 15)/10
+                current_obstacle.X_VELOCITY["left"] -= randint(3, 8)/10
+                current_obstacle.X_VELOCITY["right"] += randint(3, 8)/10
             elif best_score >= 100:
-                current_obstacle.X_VELOCITY["left"] -= randint(1, 15)/10
-                current_obstacle.X_VELOCITY["right"] += randint(1, 15)/10
+                current_obstacle.X_VELOCITY["left"] -= randint(2, 10)/10
+                current_obstacle.X_VELOCITY["right"] += randint(2, 10)/10
             CUR_WORLD.display()
             CUR_WORLD.display_sprites(current_obstacle)
             pygame.display.update()

@@ -33,7 +33,7 @@ class Obstacle:
     """
     SCREEN_WIDTH = tkinter.Tk().winfo_screenwidth()/2
     SCREEN_HEIGHT = tkinter.Tk().winfo_screenheight()/2
-    X_VELOCITY = {"left": -4, "right": 4}
+    X_VELOCITY = {"left": -5, "right": 5}
     STARTING_LOCATION = {"left": 0, "right": SCREEN_WIDTH}
     COLLISION_LOCATION = {"left": SCREEN_WIDTH * 0.4, \
         "right": SCREEN_WIDTH * 0.55}
