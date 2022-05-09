@@ -156,6 +156,19 @@ class MaoRun(world):
     Display the Mao Run world.
 
     Attributes:
+        info_screen (Vidinfo): Player's display information
+        screen_width (float): Player's display width
+        screen_height (float): Player's display height
+        screen (Pygame surface): The window to display the game
+        intro (pygame surface): Introduction screen
+        instructions (pygame surface): Instructions screen
+        background (pygame surface): Background when the game is active
+        restart (pygame surface): Restart screen
+        game_over (pygame surface): Game Over screen
+        hearts (pygame surface): A heart obstacle
+        spades (pygame surface): A spade obstacle
+        clubs (pygame surface): A club obstacle
+        diamonds (pygame surface): A diamond obstacle
     """
 
     def __init__(self, character):
@@ -169,11 +182,11 @@ class MaoRun(world):
         super().__init__(character)
 
         # Get player's screen information
-        self.infoObject = pygame.display.Info()
+        self.info_screen = pygame.display.Info()
 
         # Initialize a screen based on the player's screen
-        self.screen_width = self.infoObject.current_w/2
-        self.screen_height = self.infoObject.current_h/2
+        self.screen_width = self.info_screen.current_w/2
+        self.screen_height = self.info_screen.current_h/2
         self.screen = pygame.display.set_mode((self.screen_width,
                                                 self.screen_height))
 
