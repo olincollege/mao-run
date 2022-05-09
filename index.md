@@ -12,7 +12,7 @@ _Technically, you shouldn’t view this section to enjoy the full game experienc
 ### Image of Mao Run Game
 The image below illustrates the start screen for Mao Run. The player must press any key to move forward and begin playing.
 ![Intro Screen](https://i.ibb.co/CHDvSPq/mao-run-start-screen.png)<br>
-After the game has begun, obstacles, such as the club below, and the player must figure out what to do to continue playing the game.
+After the game has begun, obstacles, such as the club below, appear and the player must figure out what to do to continue playing the game.
 ![In-game Screen](https://i.ibb.co/kgF1TvS/mao-run-image.jpg)
 - - - 
 ## FEATURES
