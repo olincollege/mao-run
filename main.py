@@ -96,7 +96,6 @@ if __name__ == '__main__':
                 game.exit_window(event)
         # Else, update the display and continue this iretation of the game
         else:
-            print(current_obstacle.X_VELOCITY)
             if best_score == randint(12, 50):
                 current_obstacle.X_VELOCITY["left"] = -randint(53, 60)/10
                 current_obstacle.X_VELOCITY["right"] = randint(53, 60)/10
