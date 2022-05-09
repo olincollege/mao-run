@@ -10,7 +10,7 @@ go for it”. As long as you have a chance to correct yourself, the possibility 
 
 ## Try it yourself!
 
-### Installation instructions for [Mao Run](https://github.com/olincollege/mao-run)
+### Installation instructions for [Mao Run](https://olincollege.github.io/mao-run/)
 1. Clone the repository.<br>
     `git clone https://github.com/olincollege/mao-run.git`
 2. Navigate to the local repository using your terminal.<br>
