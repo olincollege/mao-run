@@ -49,12 +49,23 @@ This project relies upon the following dependency:
 # About Us
 ### [Lili Baker](https://github.com/lilibaker)
 *Back End Software Developer*
+* "I would rather be reading right now, but here we are 😓"
+* Patiently generated and delivered all test functions
+* Diligently fill up every needed spot in the code
 
 ### [Cherry Pham](https://github.com/cherryyypham)
 *Back End Software Developer*
+* "Can you do it again 🥺👉👈"
+* Adaptively employ all Pygame implementations 
+* Meticulously ensure the project's quality
 
 ### [Vaani Bhatnagar](https://github.com/vaanibhatnagar)
 *UI/UX Designer*
+*UI/UX Designer*
+* "I'm so hungry 😩🍗🍞🧀"
+* Skillfully produce adorable sprite designs and eye-catching color scheme
+* Effectively incorporated critiques into design process
+
 
 # References
 Mao Run is inspired by the underlying concepts of the card game [Mao](https://www.wikihow.com/Play-Mao), in which all players except the gamemaster do not know the rules of the game. The particpants learn the unspoken rules whilst playing the game, which is similar to how Mao Run (2022) works.
