@@ -9,8 +9,7 @@ go for it”. As long as you have a chance to correct yourself, the possibility 
 _Technically, you shouldn’t view this section to enjoy the full game experience._
 - - - 
 Below is the demonstration video for Mao Run. <br>
-<!-- [![Demonstration Video](https://i.ibb.co/CHDvSPq/mao-run-start-screen.png)](https://youtu.be/HAZj4FIPxYA "Mao Run") -->
-<video src="https://youtu.be/HAZj4FIPxYA" type="video/mp4" alt="Mao Run">
+[![Demonstration Video](https://i.ibb.co/CHDvSPq/mao-run-start-screen.png)](https://youtu.be/HAZj4FIPxYA "Mao Run")
 
 ### Image of Mao Run Game
 After the game has begun, obstacles, such as the club below, appear and the player must figure out what to do to continue playing the game.
