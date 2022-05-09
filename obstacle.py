@@ -34,7 +34,8 @@ class Obstacle:
     screen_height = _root.winfo_screenheight()/2
     X_VELOCITY = {"left": -4, "right": 4}
     STARTING_LOCATION = {"left": 0, "right": screen_width}
-    COLLISION_LOCATION = {"left": screen_width * 0.4, "right": screen_width * 0.55}
+    COLLISION_LOCATION = {"left": screen_width * 0.4, \
+        "right": screen_width * 0.55}
 
     def __init__(self, sprite, actions, start_position=None):
         """
