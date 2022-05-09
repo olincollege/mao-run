@@ -55,8 +55,9 @@ This project relies upon the following dependency:
 
 ### [Cherry Pham](https://github.com/cherryyypham)
 *Back End Software Developer*
+<img src="https://i.ibb.co/PxvwJZZ/mao-run-0000-Cherry.jpg" width ="20%" height = "30%" style="float:left">
 * "Can you do it again 🥺👉👈"
-* Adaptively employ all Pygame implementations 
+* Adaptively employ all Pygame implementations
 * Meticulously ensure the project's quality
 
 ### [Vaani Bhatnagar](https://github.com/vaanibhatnagar)
@@ -65,7 +66,10 @@ This project relies upon the following dependency:
 * "I'm so hungry 😩🍗🍞🧀"
 * Skillfully produce adorable sprite designs and eye-catching color scheme
 * Effectively incorporated critiques into design process
-
+<!-- 
+<a href="https://ibb.co/8bhJcG4"><img src="https://i.ibb.co/LrGM5Bh/mao-run-0002-Lili.jpg" alt="mao-run-0002-Lili" border="0"></a>
+<a href="https://ibb.co/k2NcYyy"><img src="https://i.ibb.co/HT5gm22/mao-run-0001-Vaani.jpg" alt="mao-run-0001-Vaani" border="0"></a>
+<a href="https://ibb.co/7vd2BJJ"><img src="https://i.ibb.co/PxvwJZZ/mao-run-0000-Cherry.jpg" alt="mao-run-0000-Cherry" border="0"></a> -->
 
 # References
 Mao Run is inspired by the underlying concepts of the card game [Mao](https://www.wikihow.com/Play-Mao), in which all players except the gamemaster do not know the rules of the game. The particpants learn the unspoken rules whilst playing the game, which is similar to how Mao Run (2022) works.
