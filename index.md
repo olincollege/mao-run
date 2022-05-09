@@ -8,7 +8,8 @@ go for it”. As long as you have a chance to correct yourself, the possibility 
 # Preview
 _Technically, you shouldn’t view this section to enjoy the full game experience._
 - - - 
-[![Alternate Text]({image-url})]({video-url} "Link Title") - insert video
+Below is the demonstration video for Mao Run.
+[![Demonstration Video]]({https://youtu.be/HAZj4FIPxYA} "Mao Run") - insert video
 ### Image of Mao Run Game
 The image below illustrates the start screen for Mao Run. The player must press any key to move forward and begin playing.
 ![Intro Screen](https://i.ibb.co/CHDvSPq/mao-run-start-screen.png)<br><br>
