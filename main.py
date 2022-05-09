@@ -1,5 +1,5 @@
 """
-Insert Docstring Here
+Main file for running the game
 """
 from random import choice, randint
 import pygame
