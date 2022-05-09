@@ -37,7 +37,7 @@ class world(ABC):
 
     def __init__(self, player):
         """
-        Create a world instance.
+        Create a Mao Run world instance.
 
         Args:
             player (Character): A Character instance representing the player
