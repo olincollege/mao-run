@@ -9,7 +9,9 @@ go for it”. As long as you have a chance to correct yourself, the possibility 
 _Technically, you shouldn’t view this section to enjoy the full game experience._
 - - - 
 Below is the demonstration video for Mao Run. <br>
-[![Demonstration Video](https://i.ibb.co/CHDvSPq/mao-run-start-screen.png)](https://youtu.be/HAZj4FIPxYA "Mao Run")
+<!-- [![Demonstration Video](https://i.ibb.co/CHDvSPq/mao-run-start-screen.png)](https://youtu.be/HAZj4FIPxYA "Mao Run") -->
+<video src="https://youtu.be/HAZj4FIPxYA" type="video/mp4" alt="Mao Run">
+
 ### Image of Mao Run Game
 After the game has begun, obstacles, such as the club below, appear and the player must figure out what to do to continue playing the game.
 ![In-game Screen](https://i.ibb.co/kgF1TvS/mao-run-image.jpg)
@@ -49,21 +51,21 @@ This project relies upon the following dependency:
 # About Us
 ### [Lili Baker](https://github.com/lilibaker)
 *Back End Software Developer*
-<img src="https://i.ibb.co/NYgGQ34/lili-baker.png" alt="lili-baker" width="20%" height="20%" border-right="20%" style="float:left">
+<img src="https://i.ibb.co/NYgGQ34/lili-baker.png" alt="lili-baker" width="20%" height="20%" style="float:left">
 * "I would rather be reading right now, but here we are 😓"
 * Patiently generated and delivered all test functions
 * Diligently fill up every needed spot in the code
 <br><br>
 ### [Cherry Pham](https://github.com/cherryyypham)
 *Back End Software Developer*
-<img src="https://i.ibb.co/1Lb2fpz/cherry-pham.png" alt="cherry-pham" width="20%" height="20%" border-right="20%" style="float:left">
+<img src="https://i.ibb.co/1Lb2fpz/cherry-pham.png" alt="cherry-pham" width="20%" height="20%" style="float:left">
 * "Can you do it again 🥺👉👈"
 * Adaptively employ all Pygame implementations
 * Meticulously ensure the project's quality
 <br><br>
 ### [Vaani Bhatnagar](https://github.com/vaanibhatnagar)
 *UI/UX Designer*
-<img src="https://i.ibb.co/zRdXtLX/vaani-bhatnagar.png" alt="vaani-bhatnagar" width="20%" height="20%" border-right="20%" style="float:left">
+<img src="https://i.ibb.co/zRdXtLX/vaani-bhatnagar.png" alt="vaani-bhatnagar" width="20%" height="20%" style="float:left">
 * "I'm so hungry 😩🍗🍞🧀"
 * Skillfully produce adorable sprite designs and eye-catching color scheme
 * Effectively incorporated critiques into design process
