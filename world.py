@@ -13,7 +13,7 @@ class world(ABC):
 
     Attributes:
         maorun_icon (pygame surface): App icon
-        intro (pygame surface): Introduction screen 
+        intro (pygame surface): Introduction screen
         clock: Controls the frames of the game
         _fps (integer): Frames per second
         instructions (pygame surface): Instructions screen
@@ -22,7 +22,8 @@ class world(ABC):
         game_over (pygame surface): Game Over screen
         score_font (pygame font): Font settings for score display
         esc_font (pygame font): First font settings for "Esc" message display
-        esc_font_bold (pygame font): Second font settings for "Esc" message display
+        esc_font_bold (pygame font): Second font settings for "Esc"
+            message display
         press (pygame text): A text surface that says "Press"
         esc (pygame text): A text surface that says "Esc"
         to_end_game (pygame text): A text surface that says "to end game"
@@ -80,7 +81,7 @@ class world(ABC):
         self.spades = pygame.image.load("Sprites/spades.png")
         self.clubs = pygame.image.load("Sprites/clubs.png")
         self.diamonds = pygame.image.load("Sprites/diamonds.png")
-    
+
     @property
     def fps(self):
         """
@@ -153,11 +154,16 @@ class world(ABC):
 class MaoRun(world):
     """
     Display the Mao Run world.
+
+    Attributes:
     """
 
     def __init__(self, character):
         """
-        Insert Docstring
+        Initialize necessary attributes in Mao Run world.
+
+        Args:
+            character (Character): A Character instance representing the player
         """
         # Inherits all attributes from character
         super().__init__(character)
@@ -168,22 +174,35 @@ class MaoRun(world):
         # Initialize a screen based on the player's screen
         self.screen_width = self.infoObject.current_w/2
         self.screen_height = self.infoObject.current_h/2
-        self.screen = pygame.display.set_mode((self.screen_width, self.screen_height))
+        self.screen = pygame.display.set_mode((self.screen_width,
+                                                self.screen_height))
 
         # Reset the scale of different screens during the game
-        self.intro = pygame.transform.scale(self.intro, (self.screen_height, self.screen_height))
-        self.instructions = pygame.transform.scale(self.instructions, (self.screen_height, self.screen_height))
-        self.background = pygame.transform.scale(self.background, (self.screen_width, self.screen_height))
-        self.restart = pygame.transform.scale(self.restart, (self.screen_height, self.screen_height))
-        self.game_over = pygame.transform.scale(self.game_over, (self.screen_height,self.screen_height))
+        self.intro = pygame.transform.scale(self.intro,
+                                    (self.screen_height,self.screen_height))
+        self.instructions = pygame.transform.scale(self.instructions,
+                                    (self.screen_height,self.screen_height))
+        self.background = pygame.transform.scale(self.background,
+                                    (self.screen_width, self.screen_height))
+        self.restart = pygame.transform.scale(self.restart,
+                                    (self.screen_height, self.screen_height))
+        self.game_over = pygame.transform.scale(self.game_over,
+                                    (self.screen_height,self.screen_height))
 
         # Reset the scale of Mao Run obstacles
-        self.hearts = pygame.transform.scale(self.hearts, (self.screen_width/13, self.screen_height/7))
-        self.spades = pygame.transform.scale(self.spades, (self.screen_width/13, self.screen_height/7))
-        self.clubs = pygame.transform.scale(self.clubs, (self.screen_width/13, self.screen_height/7))
-        self.diamonds = pygame.transform.scale(self.diamonds, (self.screen_width/13, self.screen_height/7))
+        self.hearts = pygame.transform.scale(self.hearts,
+                                (self.screen_width/13, self.screen_height/7))
+        self.spades = pygame.transform.scale(self.spades,
+                                (self.screen_width/13, self.screen_height/7))
+        self.clubs = pygame.transform.scale(self.clubs,
+                                (self.screen_width/13, self.screen_height/7))
+        self.diamonds = pygame.transform.scale(self.diamonds,
+                                (self.screen_width/13, self.screen_height/7))
 
+        # Set the game title
         pygame.display.set_caption('Mao Run')
+
+        # Set the game icon
         pygame.display.set_icon(self.maorun_icon)
 
     def display_intro(self):
@@ -191,7 +210,8 @@ class MaoRun(world):
         Display introduction surface to screen.
         """
         self.screen.fill("black")
-        self.screen.blit(self.intro,self.intro.get_rect(midtop = (self.screen_width/2,0)))
+        self.screen.blit(self.intro,
+            self.intro.get_rect(midtop=(self.screen_width/2,0)))
         self.clock.tick(self.fps)
         pygame.display.update()
 
@@ -200,8 +220,9 @@ class MaoRun(world):
         Display instructions surface to screen.
         """
         self.screen.fill("black")
-        self.screen.blit(self.instructions,self.instructions.get_rect(midtop = (self.screen_width/2,0)))
-        self.clock.tick(60)
+        self.screen.blit(self.instructions,
+            self.instructions.get_rect(midtop=(self.screen_width/2,0)))
+        self.clock.tick(self.fps)
         pygame.display.update()
 
     def display_restart(self):
@@ -209,8 +230,9 @@ class MaoRun(world):
         Display restart surface to screen.
         """
         self.screen.fill("black")
-        self.screen.blit(self.restart,self.restart.get_rect(midtop = (self.screen_width/2,0)))
-        self.clock.tick(60)
+        self.screen.blit(self.restart,
+            self.restart.get_rect(midtop=(self.screen_width/2,0)))
+        self.clock.tick(self.fps)
         pygame.display.update()
 
     def display_game_over(self):
@@ -218,20 +240,23 @@ class MaoRun(world):
         Display game over surface to screen.
         """
         self.screen.fill("#5C5755")
-        self.screen.blit(self.game_over,self.game_over.get_rect(midtop = (self.screen_width/2,0)))
-        self.clock.tick(60)
+        self.screen.blit(self.game_over,
+            self.game_over.get_rect(midtop = (self.screen_width/2,0)))
+        self.clock.tick(self.fps)
 
     def display_score(self, score):
         """
         Display score surface to screen.
 
         Args:
-            score (string): The highest score of the current implementation of Mao Run.
+            score (string): The highest score of the current implementation
+                of Mao Run.
         """
-        self.text = self.score_font.render(score, False, 'Green')
-        self.screen.blit(self.text,self.text.get_rect(midtop = (self.screen_width *.53, self.screen_height* .73)))
+        text = self.score_font.render(score, False, 'Green')
+        self.screen.blit(text,text.get_rect(midtop=(self.screen_width*.53,
+                                                    self.screen_height*.73)))
         self.clock.tick(self.fps)
-    
+
     def display_sprites(self, obstacle):
         """
         Display sprites surface to screen.
@@ -261,14 +286,21 @@ class MaoRun(world):
 
     def display_esc_instructions(self):
         """
+        Display "Esc" instructions surface to screen.
         """
-        self.screen.blit(self.press, self.press.get_rect(bottomright = (self.screen_width-120,self.screen_height-5)))
-        self.screen.blit(self.esc, self.esc.get_rect(bottomright = (self.screen_width-90,self.screen_height-5)))
-        self.screen.blit(self.to_end_game, self.to_end_game.get_rect(bottomright = (self.screen_width-5,self.screen_height-5)))
+        self.screen.blit(self.press,
+            self.press.get_rect(bottomright=(self.screen_width-120,
+                                            self.screen_height-5)))
+        self.screen.blit(self.esc,
+            self.esc.get_rect(bottomright=(self.screen_width-90,
+                                            self.screen_height-5)))
+        self.screen.blit(self.to_end_game,
+            self.to_end_game.get_rect(bottomright=(self.screen_width-5,
+                                                self.screen_height-5)))
 
     def display(self):
         """
-        Insert Docstring
+        Display in game environment without sprites.
         """
         self.screen.blit(self.background, (0, 0))
         self.display_esc_instructions()
