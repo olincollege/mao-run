@@ -12,26 +12,27 @@ class world(ABC):
     the necessary images and texts that appear on the game screen.
 
     Attributes:
-        maorun_icon (pygame surface): App icon
-        intro (pygame surface): Introduction screen
-        clock: Controls the frames of the game
-        _fps (integer): Frames per second
-        instructions (pygame surface): Instructions screen
-        background (pygame surface): Background when the game is active
-        restart (pygame surface): Restart screen
-        game_over (pygame surface): Game Over screen
-        score_font (pygame font): Font settings for score display
-        esc_font (pygame font): First font settings for "Esc" message display
-        esc_font_bold (pygame font): Second font settings for "Esc"
+        maorun_icon: A pygame surface that represents the app icon
+        intro: A pygame surface that represents the Introduction screen
+        clock: A clock object that controls the frames of the game
+        _fps: An integer representing frames per second
+        instructions: A pygame surface that represents the Instructions screen
+        background: A pygame surface that represents the
+            background when the game is active
+        restart: A pygame surface that represents the Restart screen
+        game_over: A pygame surface that represents the Game Over screen
+        score_font: A pygame font set for score display
+        esc_font: A pygame font set for "Esc" message display
+        esc_font_bold: A pygame font set for bolded "Esc"
             message display
-        press (pygame text): A text surface that says "Press"
-        esc (pygame text): A text surface that says "Esc"
-        to_end_game (pygame text): A text surface that says "to end game"
-        player (Character // pygame sprite): A Character instance
-        hearts (pygame surface): A heart obstacle
-        spades (pygame surface): A spade obstacle
-        clubs (pygame surface): A club obstacle
-        diamonds (pygame surface): A diamond obstacle
+        press: A text surface that says "Press"
+        esc: A text surface that says "Esc"
+        to_end_game: A text surface that says "to end game"
+        player: A Character instance
+        hearts: A pygame surface that represents a heart obstacle
+        spades: A pygame surface that represents a spade obstacle
+        clubs: A pygame surface that represents a club obstacle
+        diamonds: A pygame surface that represents a diamond obstacle
     """
 
     def __init__(self, player):
