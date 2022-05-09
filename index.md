@@ -10,8 +10,8 @@ _Technically, you shouldn’t view this section to enjoy the full game experienc
 - - - 
 [![Alternate Text]({image-url})]({video-url} "Link Title") - insert video
 ### Image of Mao Run Game
-![Game Screen](https://i.ibb.co/hYnCfcW/thumbnail-Image-2.jpg)
-<iframe src="https://drive.google.com/file/d/1MWAT3tA7UySODnrS-GA2UlgXTcnCrbNh/preview" width="640" height="480" allow="autoplay" alt="Image of Mao Run Game"></iframe>
+![Intro Screen](https://i.ibb.co/kgF1TvS/mao-run-image.jpg)
+![In-game Screen](https://i.ibb.co/YyZ2Rkt/mao-run-start-screen.png)
 
 - - - 
 ## FEATURES
