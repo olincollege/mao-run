@@ -53,20 +53,20 @@ This project relies upon the following dependency:
 <img src="https://i.ibb.co/NYgGQ34/lili-baker.png" alt="lili-baker" width="20%" height="20%" style="float:left">
 * "I would rather be reading right now, but here we are 😓"
 * Patiently generated and delivered all test functions
-* Diligently fill up every needed spot in the code
+* Diligently filled up every needed spot in the code
 <br><br>
 ### [Cherry Pham](https://github.com/cherryyypham)
 *Back End Software Developer*
 <img src="https://i.ibb.co/1Lb2fpz/cherry-pham.png" alt="cherry-pham" width="20%" height="20%" style="float:left">
 * "Can you do it again 🥺👉👈"
-* Adaptively employ all Pygame implementations
-* Meticulously ensure the project's quality
+* Adaptively employed all Pygame implementations
+* Meticulously ensured the project's quality
 <br><br>
 ### [Vaani Bhatnagar](https://github.com/vaanibhatnagar)
 *UI/UX Designer*
 <img src="https://i.ibb.co/zRdXtLX/vaani-bhatnagar.png" alt="vaani-bhatnagar" width="20%" height="20%" style="float:left">
 * "I'm so hungry 😩🍗🍞🧀"
-* Skillfully produce adorable sprite designs and eye-catching color scheme
+* Skillfully produced adorable sprite designs and eye-catching color scheme
 * Effectively incorporated critiques into design process
 <br><br>
 <br>
