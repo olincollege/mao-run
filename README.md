@@ -34,19 +34,19 @@ This project relies upon the following dependency:
 *Back End Software Developer*
 * "I would rather be reading right now, but here we are 😓"
 * Patiently generated and delivered all test functions
-* Diligently fill up every needed spot in the code
+* Diligently filled up every needed spot in the code
 
 #### Cherry Pham
 *Back End Software Developer*
 * "Can you do it again 🥺👉👈"
-* Adaptively employ all Pygame implementations 
-* Meticulously ensure the project's quality
+* Adaptively employed all Pygame implementations 
+* Meticulously ensured the project's quality
 
 
 #### Vaani Bhatnagar
 *UI/UX Designer*
 * "I'm so hungry 😩🍗🍞🧀"
-* Skillfully produce adorable sprite designs and eye-catching color scheme
+* Skillfully produced adorable sprite designs and eye-catching color scheme
 * Effectively incorporated critiques into design process
 
 # References
