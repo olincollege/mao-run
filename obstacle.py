@@ -9,6 +9,8 @@ class Obstacle:
     Create an obstacle.
 
     Attributes:
+        SCREEN_WIDTH: A float representing the player's screen width
+        SCREEN_HEIGHT: A float representing the player's screen height
         X_VELOCITY: A dictionary with the keys as strings representing
             the start side of the screen and the values as integers
             representing the respective velocities.
@@ -29,13 +31,12 @@ class Obstacle:
         _action: A pygame event representing the desired key press for the
             obstacle.
     """
-    _root = tkinter.Tk()
-    screen_width = _root.winfo_screenwidth()/2
-    screen_height = _root.winfo_screenheight()/2
+    SCREEN_WIDTH = tkinter.Tk().winfo_screenwidth()/2
+    SCREEN_HEIGHT = tkinter.Tk().winfo_screenheight()/2
     X_VELOCITY = {"left": -4, "right": 4}
-    STARTING_LOCATION = {"left": 0, "right": screen_width}
-    COLLISION_LOCATION = {"left": screen_width * 0.4, \
-        "right": screen_width * 0.55}
+    STARTING_LOCATION = {"left": 0, "right": SCREEN_WIDTH}
+    COLLISION_LOCATION = {"left": SCREEN_WIDTH * 0.4, \
+        "right": SCREEN_WIDTH * 0.55}
 
     def __init__(self, sprite, actions, start_position=None):
         """
@@ -52,7 +53,7 @@ class Obstacle:
             start_position = choice(["left", "right"])
         self._start_position = start_position
         self._x_position = self.STARTING_LOCATION[self.start_position]
-        self._y_position = self.screen_height * .55
+        self._y_position = self.SCREEN_HEIGHT * .55
         self._collision_position = self.COLLISION_LOCATION[self.start_position]
         self._action = actions[sprite]
 
