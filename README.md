@@ -33,7 +33,7 @@ This project relies upon the following dependency:
 #### Lili Baker
 *Back End Software Developer*
 * "I would rather be reading right now, but here we are 😓"
-* Patiently generated and delivered all the test files
+* Patiently generated and delivered all test functions
 * Diligently fill up every needed spot in the code
 
 #### Cherry Pham
