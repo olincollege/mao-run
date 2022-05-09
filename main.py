@@ -1,5 +1,5 @@
 """
-Main file for running the game
+Main file for Mao Run game implementation.
 """
 from random import choice, randint
 import pygame
