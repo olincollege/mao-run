@@ -5,8 +5,7 @@ _A game in which the rules are unknown_
 
 Mao Run is a 2D platformer game with only 1 rule: _We don’t talk about the rules._ The player has to figure out what to do with whatever visual cues provided to them on screen. Our goal is to be as infuriating as possible while keeping a certain level of enjoyment and dopamine for players to fixate on continuing.
 
-In a way, despite its non-educative appearance and inherent silliness, Mao Run embodies the ultimate life lesson: _“You live and you learn.”_ Sometimes, what you need to do is to “just 
-go for it”. As long as you have a chance to correct yourself, the possibility for trial and error (and eventual improvement) is endless. We hope you have good luck in diving headfirst into whatever the task that made you hesitant is. Meanwhile, ***enjoy our game!***
+In a way, despite its non-educative appearance and inherent silliness, Mao Run embodies the ultimate life lesson: _“You live and you learn.”_ Sometimes, what you need to do is to “just go for it”. As long as you have a chance to correct yourself, the possibility for trial and error (and eventual improvement) is endless. We hope you have good luck in diving headfirst into whatever the task that made you hesitant is. Meanwhile, ***enjoy our game!***
 
 ## Try it yourself!
 
@@ -50,4 +49,4 @@ This project relies upon the following dependency:
 * Effectively incorporated critiques into design process
 
 # References
-Mao Run is inspired by the underlying concepts of the card game [Mao](https://www.wikihow.com/Play-Mao), in which all players except the gamemaster do not know the rules of the game. The particpants learn the unspoken rules whilst playing the game, which is similar to how Mao Run (2022) works.
+Mao Run is inspired by the underlying concepts of the card game [Mao](https://www.wikihow.com/Play-Mao), in which all players except the gamemaster do not know the rules of the game. The participants learn the unspoken rules whilst playing the game, which is similar to how Mao Run (2022) works.
